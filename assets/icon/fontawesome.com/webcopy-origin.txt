@@ -1,0 +1,148 @@
+Uri: https://fontawesome.com/
+File Name: C:\Downloaded Web Sites\fontawesome.com\index.htm
+Content Type: text/html
+
+Uri: https://fontawesome.com/css/app-wa-02670e9412103b5852dcbe140d278c49.css?vsn=d
+File Name: C:\Downloaded Web Sites\fontawesome.com\css\app-wa-02670e9412103b5852dcbe140d278c49.css
+Content Type: text/css
+
+Uri: https://fontawesome.com/favicon.ico
+File Name: C:\Downloaded Web Sites\fontawesome.com\favicon.ico
+Content Type: image/vnd.microsoft.icon
+
+Uri: https://fontawesome.com/images/favicon/apple-touch-icon.png
+File Name: C:\Downloaded Web Sites\fontawesome.com\images\favicon\apple-touch-icon.png
+Content Type: image/png
+
+Uri: https://fontawesome.com/images/favicon/icon.svg
+File Name: C:\Downloaded Web Sites\fontawesome.com\images\favicon\icon.svg
+Content Type: image/svg+xml
+
+Uri: https://fontawesome.com/js/app-4829e10b234af9a2d9996d4c00451b93.js?vsn=d
+File Name: C:\Downloaded Web Sites\fontawesome.com\js\app-4829e10b234af9a2d9996d4c00451b93.js
+Content Type: text/javascript
+
+Uri: https://fontawesome.com/js/settings-b7185236766b39f527f20fa49276527c.js?vsn=d
+File Name: C:\Downloaded Web Sites\fontawesome.com\js\settings-b7185236766b39f527f20fa49276527c.js
+Content Type: text/javascript
+
+Uri: https://fontawesome.com/manifest/app.json
+File Name: C:\Downloaded Web Sites\fontawesome.com\manifest\app.json
+Content Type: application/json
+
+Uri: https://js.stripe.com/v3/
+File Name: C:\Downloaded Web Sites\fontawesome.com\v3\index.htm
+Content Type: text/javascript
+
+Uri: https://m.servedby-buysellads.com/monetization.js
+File Name: C:\Downloaded Web Sites\fontawesome.com\monetization.js
+Content Type: application/javascript
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\css\all.css
+Content Type: text/css
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\css\sharp-light.css
+Content Type: text/css
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\css\sharp-regular.css
+Content Type: text/css
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\css\sharp-solid.css
+Content Type: text/css
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-brands-400.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-brands-400.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-brands-400.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-brands-400.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-duotone-900.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-duotone-900.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-duotone-900.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-duotone-900.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-light-300.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-light-300.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-light-300.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-light-300.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-regular-400.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-regular-400.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-regular-400.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-regular-400.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-sharp-light-300.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-sharp-light-300.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-sharp-light-300.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-sharp-light-300.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-sharp-regular-400.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-sharp-regular-400.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-sharp-regular-400.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-sharp-regular-400.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-sharp-solid-900.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-sharp-solid-900.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-sharp-solid-900.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-sharp-solid-900.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-solid-900.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-solid-900.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-solid-900.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-solid-900.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-thin-100.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-thin-100.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-thin-100.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-thin-100.woff2
+Content Type: font/woff2
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-v4compatibility.ttf
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-v4compatibility.ttf
+Content Type: font/ttf
+
+Uri: https://site-assets.fontawesome.com/releases/v6.4.2/webfonts/fa-v4compatibility.woff2
+File Name: C:\Downloaded Web Sites\fontawesome.com\releases\v6.4.2\webfonts\fa-v4compatibility.woff2
+Content Type: font/woff2
+
+Uri: https://use.fortawesome.com/1ce05b4b.js
+File Name: C:\Downloaded Web Sites\fontawesome.com\1ce05b4b.js
+Content Type: application/javascript
+
+Uri: https://www.google.com/recaptcha/api.js?render=6Lfwy8YZAAAAAOymsOdsZ7xDAG-TFKW_fij1Wnjg
+File Name: C:\Downloaded Web Sites\fontawesome.com\recaptcha\api.js
+Content Type: text/javascript
+
+Uri: https://www.googletagmanager.com/gtag/js?id=G-BPMS41FJD2
+File Name: C:\Downloaded Web Sites\fontawesome.com\gtag\js
+Content Type: application/javascript
+
