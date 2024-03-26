@@ -46,13 +46,13 @@
     padding: 8px 16px;
     font-size: 1.6rem;
     color: #fff;
-    border-radius: 8px 0 0 8px;
+    border-radius: 6px 0 0 6px;
 }
 
 .search button {
     width: 40px;
     font-size: 1.8rem;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 6px 6px 0;
     background-color: #4a4e69;
     color: #fff
 }
@@ -85,7 +85,7 @@
 
 .slide figure {
     height: 500px;
-    border-radius: 8px;
+    border-radius: 3px;
     overflow: hidden;
 }
 
@@ -97,8 +97,8 @@
     height: 40px;
     font-size: 2rem;
     border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 2px 3px rgba(0,0,0,.2);
+    color: #fff;
+    background-color: rgba(0,0,0,.5);
     z-index: 999;
     display: flex;
     align-items: center;
@@ -134,23 +134,23 @@
 }
 
 .slider-info__bottom button {
-    padding: 6px 16px;
+    padding: 6px 8px;
     color: #fff;
-    background-color: #ffbe0b;
-    border-radius: 8px;
+    background-color: #ff006e;
+    border-radius: 3px;
     font-size: 1.6rem;
     transition: .3s;
 }
 
 .slider-info__bottom button:hover {
-    opacity: .8 ;
+    background-color: rgba(255, 0, 110, .8);
 }
 
 .slider-info__bottom > .year  {
-    padding: 4px 8px;
+    padding: 4px 6px;
     font-size: 1.4rem;
-    background-color: #ffd60a;
-    border-radius: 4px;
+    background-color: #3a86ff;
+    border-radius: 3px;
     color: #fff;
 }
 
@@ -181,18 +181,20 @@ section header a:hover {
 }
 
 .movie-inner {
-    gap: 16px;
+    margin: 0 -8px;
 }
 
 .movie {
-    width: calc(16.66667% - 14px);
+    /* width: calc(16.66667% - 14px); */
+    width: 16.66667%;
     flex-shrink: 0;
+    padding: 0 8px;
     position: relative;
 }
 
 .movie figure {
     height: 300px;
-    border-radius: 8px;
+    border-radius: 3px;
     overflow: hidden;
     position: relative;
 }
@@ -210,7 +212,7 @@ section header a:hover {
     color: #fff;
     padding: 4px 6px;
     background-color: #ffbe0b;
-    /* border-radius: 8px; */
+    /* border-radius: 3px; */
 }
 
 .movie-name {
