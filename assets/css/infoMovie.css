@@ -1,0 +1,66 @@
+.background-movie {
+    width: 100%;
+    position: relative;
+}
+
+.background-movie figure {
+    height: 500px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.background-movie__info {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    padding: 8px;
+}
+
+.background-movie__info h3 {
+    font-size: 3rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.info-bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-bottom a {
+    font-size: 1.6rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #ff006e;
+    transition: .3s;
+}
+
+.info-bottom a:hover {
+    opacity: .8;
+}
+
+.quality, .year, .episode_current {
+    font-size: 1.4rem;
+    color: #fff;
+    padding: 2px 4px;
+    background-color:#3a86ff;
+    border-radius: 2px;
+}
+
+.information-movie {
+    margin-top: 32px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 100px;
+    font-size: 2rem;
+}
+
+.infomation-movie__actor li,
+.infomation-movie__category li {
+    margin-left: 32px;
+    font-size: 1.8rem;
+}

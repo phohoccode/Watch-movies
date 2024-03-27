@@ -53,3 +53,56 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
+.main-page {
+    position: relative;
+}
+
+.content {
+    background-color: var(--primary-color);
+    min-height: 100vh;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+.movies {
+    display: flex;
+    margin: 0 -8px;
+    flex-wrap: wrap;
+    gap: 32px 0;
+}
+
+.all-movie {
+    overflow: hidden;
+}
+
+.paginations {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    overflow-y: auto;
+    padding-bottom: 12px;
+}
+
+.page {
+    font-size: 1.6rem;
+    padding: 4px 12px;
+    font-weight: 600;
+    background-color: #ffbe0b;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.page:hover {
+    opacity: .8;
+}
+
+.page.active {
+    background-color: #3a86ff;
+}
+
+.current-page {
+    font-size: 1.6rem;
+    color: #fff;
+}

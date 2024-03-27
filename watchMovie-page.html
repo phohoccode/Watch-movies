@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Movies</title>
+    <link rel="icon" href="./assets/img/logo.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/watchMovie.css">
+    <link rel="stylesheet" href="./assets/icon/fontawesome.com/releases/v6.4.2/css/all.css">
+</head>
+<body>
+    <div class="main-page">
+        <header>
+            <div class="logo">
+                <a href="./index.html">PHOFLIX</a>
+            </div>
+            <div class="menu-header">
+                <div class="menu-header__item">
+                    <a href="./index.html">Trang chủ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a href="">Phim lẻ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a href="">Phim bộ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a href="">Hoạt hình</a>
+                </div>
+                <div class="menu-header__item">
+                    <a href="">Tv Shows</a>
+                </div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button>
+                    <i class="fa-light fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <div class="content">
+        <div class="detail-movie">
+            <h3 class="name-movie"></h3>
+            <div class="view-iframe">
+                <iframe src="" frameborder="0" class="video" allow="fullscreen"></iframe>
+            </div>
+            <div class="episode-list"></div>
+        </div>
+    </div>
+
+    <script defer src="./src/js/watchMovie.js"></script>
+</body>
+</html>
