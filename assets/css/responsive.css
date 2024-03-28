@@ -1,0 +1,48 @@
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+
+} 
+
+@media (max-width: 480px) {
+    .main-page {
+        padding: 0 16px;
+    }
+    .content.watch {
+        padding: 100px 16px 0 16px;
+    }
+    .main-page > header {
+        left: 16px;
+        right: 16px;
+        width: unset;
+    }
+    .menu-header {
+        display: none;
+    }
+    .search input {
+        width: 80%;
+    }
+    .movie {
+        width: 50%;
+    }
+    .slide figure,
+    .background-movie figure {
+        height: 350px;
+    }
+    .movie figure {
+        height: 250px;
+    }
+    .slider-info,
+    .background-movie__info {
+        left: 12px;
+        bottom: 12px;
+    }
+    .background-movie__info h3 {
+        font-size: 2rem;
+    }
+    .view-iframe iframe {
+        height: 210px;
+    }
+}

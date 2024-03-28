@@ -1,6 +1,8 @@
+import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
+
 const wacthMovie = (() => {
-    const iframe = document.querySelector('iframe')
-    const episodes = document.querySelector('.episode-list')
+    const iframe = $('iframe')
+    const episodes = $('.episode-list')
     const link_embed = JSON.parse(localStorage.getItem('link_embed'))
 
     console.log(link_embed)
@@ -25,20 +27,22 @@ const wacthMovie = (() => {
             })
         },
         setActiveMovie(element, url) {
-            document.querySelector('.episode.active').classList.remove('active')
+            $('.episode.active').classList.remove('active')
             element.classList.add('active')
             iframe.setAttribute('src', url)
         },
         setActiveMovieDefault() {
-            document.querySelectorAll('.episode')[0].classList.add('active')
+            $$('.episode')[0].classList.add('active')
             iframe.setAttribute('src', link_embed[0].link_embed)
         },
         start() {
             const valueNameMovie = JSON.parse(localStorage.getItem('movie-name'))
             const titlePage = JSON.parse(localStorage.getItem('title-page'))
             document.title = `Đang xem phim ${titlePage}`
-            const nameMovie = document.querySelector('.name-movie').innerText = valueNameMovie
+            const nameMovie = $('.name-movie').innerText = valueNameMovie
             this.renderEpisode(link_embed)
+            handleClickButtonSearch()
+            handleClickChangePage()
             this.setActiveMovieDefault()
             this.handleClickChangeEpisode()
         }

@@ -9,16 +9,16 @@ const fetchAPI = (API_KEY) => {
     return fetch(API_KEY)
         .then(async response => {
             if (response.ok) {
-                return await response.json();
+                return await response.json()
             } else {
-                throw new Error('Network response was not ok.');
+                throw new Error('Network response was not ok.')
             }
         })
         .catch(err => {
-            console.error('Error: ', err);
-            throw err;
-        });
-};
+            console.error('Error: ', err)
+            throw err
+        })
+}
 
-export default fetchAPI;
+export default fetchAPI
 

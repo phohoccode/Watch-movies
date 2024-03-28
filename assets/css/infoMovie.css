@@ -26,7 +26,7 @@
 .info-bottom {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
 }
 
 .info-bottom a {

@@ -1,31 +1,41 @@
 import fetchAPI from "./fectchAPI.js"
 import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
 
-
-const detailMovie = (() => {
-    let page = 0
-    const allMovie = $('.all-movie')
-    const paginations = $('.paginations')
-    const movieType = JSON.parse(localStorage.getItem('movie-type'))
-    console.log(movieType)
-    const totalPages = Math.round(JSON.parse(localStorage.getItem(movieType)) / 2)
+const searchPage = (() => {
+    const allMovie = $('.all-movieFound')
+    const seeMoreButton = $('.see-more')
+    const valueSearch = JSON.parse(localStorage.getItem('value-search'))
+    const limitDefault = 18
+    let index = 1
 
     return {
-        fetchApi(currentPage) {
-            const API_KEY = `${JSON.parse(localStorage.getItem('link-api'))}?page=${currentPage}&limit=20`
-            console.log(API_KEY)
+        fetchApi(limitMovie) {
+            const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
             fetchAPI(API_KEY)
                 .then(data => {
                     console.log(data.data)
-                    this.renderAllMovie(data.data, allMovie)
-                    document.title = data.data.seoOnPage.titleHead
+                    if (data.data.items.length === 0) {
+                        this.handleError()
+                        return
+                    } else {
+                        document.title = data.data.titlePage
+                        this.renderAllMovie(data.data, allMovie)
+                        if (data.data.items.length >= limitDefault) {
+                            seeMoreButton.style.display = 'flex'
+                        }
+                    }
                 })
+        },
+        handleError() {
+            const err = document.createElement('header')
+            err.classList.add('title-name')
+            err.innerHTML = `<div class="title-name">Không tìm thấy kết quả cho từ khóa: ${valueSearch}</div>`
+            allMovie.appendChild(err)
         },
         renderAllMovie(data, element) {
             const htmls = `
                 <header>
-                    <div class="title-name">Danh sách tất cả phim ${data.titlePage}</div>
-                    <span class="current-page">${data.breadCrumb[1].name}</span>
+                    <div class="title-name">Kết quả tìm kiếm cho từ khóa: ${valueSearch}</div>
                 </header>
                 <div class="movies">
                     ${data.items.map(movie => ` 
@@ -47,28 +57,10 @@ const detailMovie = (() => {
             `
             element.innerHTML = htmls
         },
-        renderPaginations(quantity) {
-            for (let i = 0; i < quantity; i++) {
-                const page = document.createElement('div')
-                page.classList.add('page')
-                page.innerText = i + 1
-                page.setAttribute('data-index', i + 1)
-                paginations.appendChild(page)
-                page.addEventListener('click', () => {
-                    const index = page.dataset.index
-                    this.fetchApi(index)
-                    this.setActivePage(page)
-                })
-            }
-        },
-        setActivePage(element) {
-            $('.page.active').classList.remove('active')
-            element.classList.add('active')
-        },
-        setActivePageDefault() {
-            $$('.page')[0].classList.add('active')
-        },
         handleEvent() {
+            handleClickButtonSearch()
+            handleClickChangePage()
+
             allMovie.addEventListener('click', (e) => {
                 const movie = e.target.closest('.movie')
                 if (movie) {
@@ -77,17 +69,18 @@ const detailMovie = (() => {
                     localStorage.setItem('link-slug', JSON.stringify(linkSlug))
                 }
             })
-            handleClickButtonSearch()
-            handleClickChangePage()
-
+            
+            seeMoreButton.addEventListener('click', () => {
+                index++
+                const limitNew = limitDefault * index
+                this.fetchApi(limitNew)
+            })
         },
         start() {
-            this.fetchApi(page)
-            this.renderPaginations(totalPages)
-            this.setActivePageDefault()
+            this.fetchApi(limitDefault)
             this.handleEvent()
         }
     }
 })()
 
-detailMovie.start()
+searchPage.start()

@@ -1,13 +1,14 @@
+import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "./fectchAPI.js"
 
 const root = (() => {
     let page = 1
-    const sliderInner = document.querySelector('.slider-inner')
-    const featureFilm = document.querySelector('.feature-film')
-    const televisonSeris = document.querySelector('.television-seris ')
-    const cartoon = document.querySelector('.cartoon')
-    const tvShows = document.querySelector('.tv-shows')
+    const sliderInner = $('.slider-inner')
+    const featureFilm = $('.feature-film')
+    const televisonSeris = $('.television-seris ')
+    const cartoon = $('.cartoon')
+    const tvShows = $('.tv-shows')
 
     return {
         fetchApi(currentPage) {
@@ -143,7 +144,7 @@ const root = (() => {
         },
 
         handleEvent() {
-            const content = document.querySelector('.content')
+            const content = $('.content')
             const screenWidth = content.clientWidth
             const maxMovies = 10
             let indexSlider = 0
@@ -154,8 +155,8 @@ const root = (() => {
             let currentPageSlide, cuurentPageFeatureFilm, cuurentPageTelevionSeri, currentPageCartoon, currentPageTvShows
 
             this.handlePrevNextEvent(
-                document.querySelector('.slider-container .prev'),
-                document.querySelector('.slider-container .next'),
+                $('.slider-container .prev'),
+                $('.slider-container .next'),
                 indexSlider,
                 currentPageSlide,
                 maxMovies,
@@ -163,8 +164,8 @@ const root = (() => {
             )
 
             this.handlePrevNextEvent(
-                document.querySelector('.feature-film .movie-container .prev'),
-                document.querySelector('.feature-film .movie-container .next'),
+                $('.feature-film .movie-container .prev'),
+                $('.feature-film .movie-container .next'),
                 indexMovieFeatureFilm,
                 cuurentPageFeatureFilm,
                 maxMovies,
@@ -172,8 +173,8 @@ const root = (() => {
             )
 
             this.handlePrevNextEvent(
-                document.querySelector('.television-seris .movie-container .prev'),
-                document.querySelector('.television-seris .movie-container .next'),
+                $('.television-seris .movie-container .prev'),
+                $('.television-seris .movie-container .next'),
                 indexMovieTelevisionSeri,
                 cuurentPageTelevionSeri,
                 maxMovies,
@@ -181,8 +182,8 @@ const root = (() => {
             )
 
             this.handlePrevNextEvent(
-                document.querySelector('.cartoon .movie-container .prev'),
-                document.querySelector('.cartoon .movie-container .next'),
+                $('.cartoon .movie-container .prev'),
+                $('.cartoon .movie-container .next'),
                 indexMovieCartoon,
                 currentPageCartoon,
                 maxMovies,
@@ -190,15 +191,15 @@ const root = (() => {
             )
 
             this.handlePrevNextEvent(
-                document.querySelector('.tv-shows .movie-container .prev'),
-                document.querySelector('.tv-shows .movie-container .next'),
+                $('.tv-shows .movie-container .prev'),
+                $('.tv-shows .movie-container .next'),
                 indexMovieTvShows,
                 currentPageTvShows,
                 maxMovies,
                 screenWidth
             )
 
-            const wacthNows = document.querySelectorAll('.wacth-now')
+            const wacthNows = $$('.wacth-now')
             wacthNows.forEach(wacthNow => {
                 if (wacthNow) {
                     wacthNow.addEventListener('click', () => {
@@ -235,6 +236,8 @@ const root = (() => {
                 }
             })
 
+            handleClickButtonSearch()
+            handleClickChangePage()
         },
         getNumberDisplayOnPage(elementAnimate, screenWidth) {
             const element = elementAnimate.children[0]

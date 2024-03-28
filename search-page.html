@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="icon" href="./assets/img/logo.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="./assets/icon/fontawesome.com/releases/v6.4.2/css/all.css">
+</head>
+<body>
+    <div class="main-page">
+        <header>
+            <div class="logo">
+                <a href="./index.html">PHOFLIX</a>
+            </div>
+            <div class="menu-header">
+                <div class="menu-header__item">
+                    <a href="./index.html">Trang chủ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a href="./detailMovie-page.html" data-type="totalPage-featureFlim" data-api="https://phimapi.com/v1/api/danh-sach/phim-le">Phim lẻ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a href="./detailMovie-page.html" data-type="totalPage-televisionSeries" data-api="https://phimapi.com/v1/api/danh-sach/phim-bo">Phim bộ</a>
+                </div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button>
+                    <i class="fa-light fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="all-movieFound"></section>
+
+            <div class="see-more">
+                <button>Xem thêm</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/js/search-page.js"></script>
+</body>
+</html>

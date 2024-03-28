@@ -90,6 +90,7 @@
 
 section {
     margin: 32px 0;
+    overflow: hidden;
 }
 
 section header {
@@ -111,7 +112,7 @@ section header a {
 }
 
 section header a:hover {
-    color: #ffbe0b;
+    color: var(--primry-color);
 }
 
 .movie-inner {
@@ -119,7 +120,6 @@ section header a:hover {
 }
 
 .movie {
-    /* width: calc(16.66667% - 14px); */
     width: 16.66667%;
     flex-shrink: 0;
     padding: 0 8px;
@@ -145,8 +145,8 @@ section header a:hover {
     text-transform: uppercase;
     color: #fff;
     padding: 4px 6px;
-    background-color: #ffbe0b;
-    /* border-radius: 3px; */
+    background-color: var(--primry-color);
+    border-radius: 3px;
 }
 
 .movie-name {
@@ -161,7 +161,7 @@ section header a:hover {
 }
 
 .movie-name:hover {
-    color: #ffbe0b;
+    color: var(--primry-color);
 }
 
 .movie figure:hover .icon-play {

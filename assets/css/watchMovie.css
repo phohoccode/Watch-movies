@@ -26,7 +26,7 @@
 
 .episode {
     padding: 8px 16px;
-    background-color: #ffbe0b;
+    background-color: var(--primry-color);
     font-size: 1.6rem;
     font-weight: 600;
     transition: .3s;

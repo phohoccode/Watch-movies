@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
-  --primary-color: #22223b;
+  --background-primary: #22223b;
+  --primry-color: #ffbe0b;
 }
 * {
   margin: 0;
@@ -24,6 +25,10 @@
 }
 ::placeholder {
   color: #cccccc;
+  user-select: none;
+}
+::selection {
+    background-color: var(--primry-color);
 }
 html {
   font-size: 62.5%;
@@ -32,11 +37,12 @@ html {
 body {
   max-width: 1400px;
   margin: 0 auto;
-  background-color: var(--primary-color);
+  background-color: var(--background-primary);
 }
 button {
   border: none;
   cursor: pointer;
+  user-select: none;
 }
 input {
   border: none;
@@ -59,10 +65,10 @@ img {
 }
 
 .content {
-    background-color: var(--primary-color);
+    background-color: var(--background-primary);
     min-height: 100vh;
     padding-top: 100px;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .movies {
@@ -105,4 +111,23 @@ img {
 .current-page {
     font-size: 1.6rem;
     color: #fff;
+}
+
+.see-more {
+    display: none;
+    /* display: flex; */
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.see-more button {
+    font-size: 1.6rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #ffbe0b;
+    transition: .3s;
+}
+
+.see-more button:hover {
+    opacity: .8;
 }

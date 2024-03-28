@@ -1,4 +1,5 @@
 import fetchAPI from "./fectchAPI.js"
+import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "./fectchAPI.js"
 
 const infoMovie = (() => {
@@ -13,17 +14,20 @@ const infoMovie = (() => {
             fetchAPI(API_MOVIE)
                 .then(data => {
                     console.log(data)
+                    if (data.status === false) {
+                        alert(`Link phim hiện tại đang hỏng :((`)
+                        return
+                    }
                     const link_embed = []
                     const titlePage = data.episodes[0].server_data[0].filename
+                    document.title = titlePage
                     data.episodes[0].server_data.forEach(link => link_embed.push(link))
                     localStorage.setItem('title-page', JSON.stringify(titlePage))
                     localStorage.setItem('link_embed', JSON.stringify(link_embed))                    
                     localStorage.setItem('movie-name', JSON.stringify(data.movie.name))
-                    document.title = titlePage
                     this.renderBackgroundMovie(data.movie, backgroundMovie)
                     this.renderInfoMovie(data.movie, infomationMovie)
                 })
-
         },
         renderBackgroundMovie(data, element) {
             const htmls = `
@@ -48,7 +52,7 @@ const infoMovie = (() => {
         },
         renderInfoMovie(data, element) {
             const htmls = `
-                <p class="infomation-movie__content">Nội dung chính: ${data.content}</p>
+                <p class="infomation-movie__content">${data.content}</p>
                 <span class="infomation-movie__country">Quốc gia: ${data.country[0].name}</span>
                 <span class="infomation-movie__time">Thời gian: ${data.time}</span>
                 <ul class="infomation-movie__actor">
@@ -69,6 +73,8 @@ const infoMovie = (() => {
         },
         start() {
             this.fetchApi()
+            handleClickButtonSearch()
+            handleClickChangePage()
         }
     }
 })()
