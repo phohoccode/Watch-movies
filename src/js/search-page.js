@@ -1,5 +1,6 @@
 import fetchAPI from "./fectchAPI.js"
 import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
+import movies from "./component/movies.js"
 
 const searchPage = (() => {
     const allMovie = $('.all-movieFound')
@@ -38,21 +39,7 @@ const searchPage = (() => {
                     <div class="title-name">Kết quả tìm kiếm cho từ khóa: ${valueSearch}</div>
                 </header>
                 <div class="movies">
-                    ${data.items.map(movie => ` 
-                    <div class="movie" data-slug="https://phimapi.com/phim/${movie.slug}">
-                        <figure>
-                            <a href="./infoMovie-page.html">
-                            <img src="${movie.poster_url.includes('https://img.phimapi.com') ? movie.poster_url : 'https://img.phimapi.com/' + movie.poster_url}" alt="">
-                            <div class="icon-play">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-
-                            </a>
-                        <span class="language">${movie.lang}</span>
-                        </figure>
-                        <a href="./infoMovie-page.html" class="movie-name">${movie.name}</a>
-                    </div>
-                    `).join('')}
+                    ${movies(data.items)}
                 </div>
             `
             element.innerHTML = htmls

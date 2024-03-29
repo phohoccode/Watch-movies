@@ -48,7 +48,7 @@ const infoMovie = (() => {
                     </div>
                 </div>
             `
-            element.innerHTML  = htmls
+            element.innerHTML = htmls
         },
         renderInfoMovie(data, element) {
             const htmls = `

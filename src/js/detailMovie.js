@@ -1,14 +1,12 @@
 import fetchAPI from "./fectchAPI.js"
 import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
-
+import movies from "./component/movies.js"
 
 const detailMovie = (() => {
     let page = 0
     const allMovie = $('.all-movie')
     const paginations = $('.paginations')
-    const movieType = JSON.parse(localStorage.getItem('movie-type'))
-    console.log(movieType)
-    const totalPages = Math.round(JSON.parse(localStorage.getItem(movieType)) / 2)
+    const totalPages = Math.round(JSON.parse(localStorage.getItem('total-page')) / 2)
 
     return {
         fetchApi(currentPage) {
@@ -28,21 +26,7 @@ const detailMovie = (() => {
                     <span class="current-page">${data.breadCrumb[1].name}</span>
                 </header>
                 <div class="movies">
-                    ${data.items.map(movie => ` 
-                    <div class="movie" data-slug="https://phimapi.com/phim/${movie.slug}">
-                        <figure>
-                            <a href="./infoMovie-page.html">
-                            <img src="${movie.poster_url.includes('https://img.phimapi.com') ? movie.poster_url : 'https://img.phimapi.com/' + movie.poster_url}" alt="">
-                            <div class="icon-play">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-
-                            </a>
-                        <span class="language">${movie.lang}</span>
-                        </figure>
-                        <a href="./infoMovie-page.html" class="movie-name">${movie.name}</a>
-                    </div>
-                    `).join('')}
+                    ${movies(data.items)}
                 </div>
             `
             element.innerHTML = htmls

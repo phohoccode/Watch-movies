@@ -15,6 +15,7 @@
 .logo {
     padding: 8px 0;
     font-size: 2rem;
+    user-select: none;
 }
 .logo a {
     color: #ffbe0b;
@@ -25,12 +26,78 @@
 .menu-header__item {
     font-size: 1.8rem;
     padding: 8px 12px;
-    cursor: pointer;
     transition: .3s;
+    color: #fff;
+    position: relative;
+    user-select: none;
 }
-.menu-header__item:hover a {
+
+.menu-header__item > a {
+    cursor: pointer;
+} 
+
+.menu-header__item > a > i {
+    margin-left: 2px;
+}
+
+.menu-header__item:hover > a,
+.menu-header__item:hover > a > i {
     color: #ffbe0b;
 }
+
+.menu-header__item:nth-child(4):after, 
+.menu-header__item:nth-child(5):after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: 80%;
+    left: 0;
+    background-color: transparent;
+    z-index: 99;
+}
+
+.menu-header__item:hover .item__list {
+    display: flex;
+}
+
+.item__list::after {
+    z-index: 100;
+    content: "";
+    position: absolute;
+    transform: translateX(-50%);
+    top: -24px;
+    left: 32px;
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent transparent #313150 transparent;
+}
+
+.item__list {
+    width: 450px;
+    display: none;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    list-style: none;
+    padding: 16px;
+    background-color: #313150;
+    border-radius: 4px;
+    position: absolute;
+    top: 50px;
+    z-index: 100;
+    transition: .5s;
+}
+.item__list > li {
+    width: calc(33.3333% - 14px);
+    transition: .3s;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.item__list > li:hover a{
+    color: #ffbe0b;
+}
+
 .search {
     flex: 1;
     display: flex;
