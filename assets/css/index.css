@@ -109,6 +109,7 @@ section header .title-name {
 
 section header a {
     transition: .3s;
+    cursor: pointer;
 }
 
 section header a:hover {

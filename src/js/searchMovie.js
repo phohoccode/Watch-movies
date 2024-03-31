@@ -1,5 +1,5 @@
+import { $,searchButton, content, changePages, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
-import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
 import movies from "./component/movies.js"
 
 const searchPage = (() => {
@@ -45,17 +45,9 @@ const searchPage = (() => {
             element.innerHTML = htmls
         },
         handleEvent() {
-            handleClickButtonSearch()
-            handleClickChangePage()
-
-            allMovie.addEventListener('click', (e) => {
-                const movie = e.target.closest('.movie')
-                if (movie) {
-                    const linkSlug = movie.dataset.slug
-                    console.log(linkSlug)
-                    localStorage.setItem('link-slug', JSON.stringify(linkSlug))
-                }
-            })
+            handleClickButtonSearch(searchButton)
+            handleClickChangePage(changePages)
+            handleClickWatchMovie(content)
             
             seeMoreButton.addEventListener('click', () => {
                 index++

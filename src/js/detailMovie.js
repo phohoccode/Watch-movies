@@ -1,20 +1,19 @@
 import fetchAPI from "./fectchAPI.js"
-import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
+import { $, $$, searchButton, content, changePages, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie } from "./base.js"
 import movies from "./component/movies.js"
+import storage from "./localStorage.js"
 
 const detailMovie = (() => {
     let page = 0
     const allMovie = $('.all-movie')
     const paginations = $('.paginations')
-    const totalPages = Math.round(JSON.parse(localStorage.getItem('total-page')) / 2)
+    const totalPages = Math.round(storage.get('total-page') / 2)
 
     return {
         fetchApi(currentPage) {
-            const API_KEY = `${JSON.parse(localStorage.getItem('link-api'))}?page=${currentPage}&limit=20`
-            console.log(API_KEY)
+            const API_KEY = `${storage.get('link-api')}?page=${currentPage}&limit=20`
             fetchAPI(API_KEY)
                 .then(data => {
-                    console.log(data.data)
                     this.renderAllMovie(data.data, allMovie)
                     document.title = data.data.seoOnPage.titleHead
                 })
@@ -53,17 +52,9 @@ const detailMovie = (() => {
             $$('.page')[0].classList.add('active')
         },
         handleEvent() {
-            allMovie.addEventListener('click', (e) => {
-                const movie = e.target.closest('.movie')
-                if (movie) {
-                    const linkSlug = movie.dataset.slug
-                    console.log(linkSlug)
-                    localStorage.setItem('link-slug', JSON.stringify(linkSlug))
-                }
-            })
-            handleClickButtonSearch()
-            handleClickChangePage()
-
+            handleClickButtonSearch(searchButton)
+            handleClickChangePage(changePages)
+            handleClickWatchMovie(content)
         },
         start() {
             this.fetchApi(page)
@@ -73,5 +64,4 @@ const detailMovie = (() => {
         }
     }
 })()
-
 detailMovie.start()

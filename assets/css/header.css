@@ -55,6 +55,7 @@
     left: 0;
     background-color: transparent;
     z-index: 99;
+    cursor: pointer;
 }
 
 .menu-header__item:hover .item__list {
@@ -66,6 +67,7 @@
     content: "";
     position: absolute;
     transform: translateX(-50%);
+    cursor: pointer;
     top: -24px;
     left: 32px;
     border-width: 12px;

@@ -1,15 +1,14 @@
+import { searchButton, changePages, handleClickButtonSearch, handleClickChangePage } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
-import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
-import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "./fectchAPI.js"
+import storage from "./localStorage.js"
 
 const infoMovie = (() => {
-    const content = document.querySelector('.content')
     const backgroundMovie = document.querySelector('.background-movie')
     const infomationMovie = document.querySelector('.information-movie')
     
     return {
         fetchApi() {
-            const API_MOVIE = JSON.parse(localStorage.getItem('link-slug'))
+            const API_MOVIE = storage.get('link-slug')
 
             fetchAPI(API_MOVIE)
                 .then(data => {
@@ -22,9 +21,9 @@ const infoMovie = (() => {
                     const titlePage = data.episodes[0].server_data[0].filename
                     document.title = titlePage
                     data.episodes[0].server_data.forEach(link => link_embed.push(link))
-                    localStorage.setItem('title-page', JSON.stringify(titlePage))
-                    localStorage.setItem('link_embed', JSON.stringify(link_embed))                    
-                    localStorage.setItem('movie-name', JSON.stringify(data.movie.name))
+                    storage.set('title-page', titlePage)
+                    storage.set('link_embed', link_embed)
+                    storage.set('movie-name', data.movie.name)
                     this.renderBackgroundMovie(data.movie, backgroundMovie)
                     this.renderInfoMovie(data.movie, infomationMovie)
                 })
@@ -73,8 +72,8 @@ const infoMovie = (() => {
         },
         start() {
             this.fetchApi()
-            handleClickButtonSearch()
-            handleClickChangePage()
+            handleClickButtonSearch(searchButton)
+            handleClickChangePage(changePages)
         }
     }
 })()

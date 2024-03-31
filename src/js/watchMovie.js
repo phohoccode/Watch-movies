@@ -1,12 +1,10 @@
-import { $, $$, handleClickButtonSearch, handleClickChangePage } from "./base.js"
+import { $, $$,searchButton, changePages, handleClickButtonSearch, handleClickChangePage } from "./base.js"
+import storage from "./localStorage.js"
 
 const wacthMovie = (() => {
     const iframe = $('iframe')
     const episodes = $('.episode-list')
-    const link_embed = JSON.parse(localStorage.getItem('link_embed'))
-
-    console.log(link_embed)
-    console.log(link_embed[0])
+    const link_embed = storage.get('link_embed')
 
     return {
         renderEpisode(data) {
@@ -20,8 +18,6 @@ const wacthMovie = (() => {
                 const episode = e.target.closest('.episode')
                 if (episode) {
                     const url = episode.dataset.linkembed
-                    const index = episode.dataset.index
-                    console.log(url, index)
                     this.setActiveMovie(episode, url)
                 }
             })
@@ -35,16 +31,19 @@ const wacthMovie = (() => {
             $$('.episode')[0].classList.add('active')
             iframe.setAttribute('src', link_embed[0].link_embed)
         },
+        setDocumentTitleAndMovieName() {
+            const valueNameMovie = storage.get('movie-name')
+            const titlePage = storage.get('title-page')
+            document.title = `Bạn đang xem ${titlePage}`
+            $('.name-movie').innerText = valueNameMovie
+        },
         start() {
-            const valueNameMovie = JSON.parse(localStorage.getItem('movie-name'))
-            const titlePage = JSON.parse(localStorage.getItem('title-page'))
-            document.title = `Đang xem phim ${titlePage}`
-            const nameMovie = $('.name-movie').innerText = valueNameMovie
+            this.setDocumentTitleAndMovieName()
             this.renderEpisode(link_embed)
-            handleClickButtonSearch()
-            handleClickChangePage()
             this.setActiveMovieDefault()
             this.handleClickChangeEpisode()
+            handleClickButtonSearch(searchButton)
+            handleClickChangePage(changePages)
         }
     }
 })()
