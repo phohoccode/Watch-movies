@@ -1,5 +1,5 @@
 import fetchAPI from "./fectchAPI.js"
-import { $, $$, searchButton, content, changePages, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie } from "./base.js"
+import { $, $$, searchButton, content, sendMail, changePages, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie, handleFeedback } from "./base.js"
 import movies from "./component/movies.js"
 import storage from "./localStorage.js"
 
@@ -55,6 +55,7 @@ const detailMovie = (() => {
             handleClickButtonSearch(searchButton)
             handleClickChangePage(changePages)
             handleClickWatchMovie(content)
+            handleFeedback(sendMail)
         },
         start() {
             this.fetchApi(page)

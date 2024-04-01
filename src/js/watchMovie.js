@@ -1,4 +1,4 @@
-import { $, $$,searchButton, changePages, handleClickButtonSearch, handleClickChangePage } from "./base.js"
+import { $, $$,searchButton, changePages,sendMail, handleClickButtonSearch, handleClickChangePage, handleFeedback } from "./base.js"
 import storage from "./localStorage.js"
 
 const wacthMovie = (() => {
@@ -44,6 +44,7 @@ const wacthMovie = (() => {
             this.handleClickChangeEpisode()
             handleClickButtonSearch(searchButton)
             handleClickChangePage(changePages)
+            handleFeedback(sendMail)
         }
     }
 })()

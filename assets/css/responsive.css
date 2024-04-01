@@ -7,22 +7,46 @@
 } 
 
 @media (max-width: 480px) {
+    *::-webkit-scrollbar {
+        width: 0;
+        height: 6px;
+      }
     .main-page {
         padding: 0 16px;
-    }
-    .content.watch {
-        padding: 100px 16px 0 16px;
     }
     .main-page > header {
         left: 16px;
         right: 16px;
         width: unset;
+        gap: 24px;
     }
     .menu-header {
         display: none;
     }
+    .bars {
+        display: block;
+    }
+    .menu-header__item {
+        
+    }
+    .menu-header__item:nth-child(4):after,
+    .menu-header__item:nth-child(5):after,
+    .item__list::after {
+        display: none;
+    }
+    .item__list {
+        list-style: unset;
+        display: flex;
+        padding: 16px 24px;
+        width: unset;
+        position: unset;
+        background-color: unset;
+    }
+    .item__list > li {
+        width: calc(50% - 10px);
+    }
     .search input {
-        width: 80%;
+        width: 84%;
     }
     .movie {
         width: 50%;
@@ -42,7 +66,20 @@
     .background-movie__info h3 {
         font-size: 2rem;
     }
+    .info-bottom {
+        flex-wrap: wrap;
+    }
     .view-iframe iframe {
         height: 210px;
+    }
+    .episode {
+        padding: 8px;
+    }
+    footer {
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+    .footer-item {
+        width: 100%;
     }
 }

@@ -1,4 +1,4 @@
-import { $,searchButton, content, changePages, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie } from "./base.js"
+import { $,searchButton, content, changePages, sendMail, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie, handleFeedback } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
 import movies from "./component/movies.js"
 
@@ -48,6 +48,7 @@ const searchPage = (() => {
             handleClickButtonSearch(searchButton)
             handleClickChangePage(changePages)
             handleClickWatchMovie(content)
+            handleFeedback(sendMail)
             
             seeMoreButton.addEventListener('click', () => {
                 index++

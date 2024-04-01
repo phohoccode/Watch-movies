@@ -6,6 +6,7 @@ const $$ = document.querySelectorAll.bind(document)
 const changePages = $$('.change-page')
 const content = $('.content')
 const searchButton = $('.search button')
+const sendMail = $('.send-mail')
 
 const handleClickButtonSearch = (element) => {
     const inputSearch = $('.search input')
@@ -57,10 +58,22 @@ const handleClickWatchMovie = (element) => {
     })
 }
 
+const handleFeedback = (element) => {
+    element.addEventListener('click', () => {
+        const messageValue = $('form textarea').value
+        if (messageValue !== '') {
+            window.location.href = `mailto:qviet092@gmail.com?subject=&body=${encodeURIComponent(messageValue)}`;
+        } else {
+            console.log('Error')
+        }
+    })
+}
+
 export {
-    $, $$, changePages, content, searchButton,
+    $, $$, changePages, content, searchButton, sendMail,
     handleClickButtonSearch,
     handleClickChangePage,
     handleFetchApi,
-    handleClickWatchMovie
+    handleClickWatchMovie,
+    handleFeedback
 }

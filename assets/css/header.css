@@ -128,3 +128,39 @@
     background-color: #5d6282;
 }
 
+.bars {
+    display: none;
+    font-size: 3rem;
+    color: #fff;
+    padding: 0;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    color: #fff;
+    font-size: 4rem;
+    z-index: 999;
+}
+
+.menu-header.mobile.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-header.mobile {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    opacity: 0;
+    transform: translateX(-100%);
+    overflow-y: auto;
+    background-color: #22223b;
+    padding: 16px 0;
+    flex-direction: column;
+    transition: .3s all linear;
+}
+
+

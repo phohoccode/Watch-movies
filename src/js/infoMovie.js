@@ -1,4 +1,4 @@
-import { searchButton, changePages, handleClickButtonSearch, handleClickChangePage } from "./base.js"
+import { searchButton, changePages, sendMail, handleClickButtonSearch, handleClickChangePage, handleFeedback } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
 import storage from "./localStorage.js"
 
@@ -74,6 +74,7 @@ const infoMovie = (() => {
             this.fetchApi()
             handleClickButtonSearch(searchButton)
             handleClickChangePage(changePages)
+            handleFeedback(sendMail)
         }
     }
 })()

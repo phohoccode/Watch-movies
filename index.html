@@ -7,6 +7,7 @@
     <link rel="icon" href="./assets/img/logo.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/icon/fontawesome.com/releases/v6.4.2/css/all.css">
@@ -14,10 +15,244 @@
 <body>
     <div class="main-page">
         <header>
+            <div class="bars">
+                <i class="fa-light fa-bars-staggered"></i>
+            </div>
             <div class="logo">
                 <a href="./index.html">PHOFLIX</a>
             </div>
             <div class="menu-header">
+                <div class="menu-header__item">
+                    <a href="./index.html">Trang chủ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a class="change-page" data-api="https://phimapi.com/v1/api/danh-sach/phim-le">Phim lẻ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a class="change-page" data-api="https://phimapi.com/v1/api/danh-sach/phim-bo">Phim bộ</a>
+                </div>
+                <div class="menu-header__item">
+                    <a>Thể loại
+                        <i class="fa-regular fa-chevron-down"></i>
+                    </a>
+                    <ul class="item__list">
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/hanh-dong">Hành Động</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/tinh-cam">Tình Cảm</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/hai-huoc">Hài Hước</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/co-trang">Cổ Trang</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/tam-ly">Tâm Lý</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/hinh-su">Hình Sự</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/chien-tranh">Chiến Tranh</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/the-thao">Thể Thao</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/vo-thuat">Võ Thuật</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/vien-tuong">Viễn Tưởng</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/phieu-luu">Phiêu Lưu</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/khoa-hoc">Khoa Học</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/kinh-di">Kinh Dị</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/am-nhac">Âm Nhạc</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/than-thoai">Thần Thoại</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/tai-lieu">Tài Liệu</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/gia-dinh">Gia Đình</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/chinh-kich">Chính Kịch</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/bi-an">Bí Ẩn</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/hoc-duong">Học Đường</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/kinh-dien">Kinh Điển</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/the-loai/phim-18">Phim 18+</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-header__item">
+                   <a>Quốc gia
+                        <i class="fa-regular fa-chevron-down"></i>
+                   </a>
+                    <ul class="item__list">
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/trung-quoc">Trung Quốc</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/han-quoc">Hàn Quốc</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/nhat-ban">Nhật Bản</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/thai-lan">Thái Lan</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/au-my">Âu Mỹ</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/dai-loan">Đài Loan</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/hong-kong">Hồng Kông</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/an-do">Ấn Độ</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/anh">Anh</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/phap">Pháp</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/canada">Canada</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/quoc-gia-khac">Quốc Gia Khác</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/duc">Đức</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/tay-ban-nha">Tây Ban Nha</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/tho-nhi-ky">Thổ Nhĩ Kỳ</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/ha-lan">Hà Lan</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/indonesia">Indonesia</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/nga">Nga</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/mexico">Mexico</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/ba-lan">Ba Lan</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/uc">Úc</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/thuy-dien">Thụy Điển</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/malaysia">Malaysia</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/brazil">Brazil</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/philippines">Philippines</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/bo-dao-nha">Bồ Đào Nha</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/y">Ý</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/dan-mach">Đan Mạch</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/uae">UAE</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/na-uy">Na Uy</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/thuy-si">Thụy Sĩ</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/chau-phi">Châu Phi</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/nam-phi">Nam Phi</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/ukraina">Ukraina</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/a-rap-xe-ut">Ả Rập Xê Út</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/bi">Bỉ</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/ireland">Ireland</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/colombia">Colombia</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/phan-lan">Phần Lan</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/viet-nam">Việt Nam</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/chile">Chile</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/hy-lap">Hy Lạp</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/nigeria">Nigeria</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/argentina">Argentina</a>
+                        </li>
+                        <li>
+                            <a class="change-page" data-api="https://phimapi.com/v1/api/quoc-gia/singapore">Singapore</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            <div class="menu-header mobile">
+                <div class="close">
+                    <i class="fa-light fa-square-xmark"></i>
+                </div>
                 <div class="menu-header__item">
                     <a href="./index.html">Trang chủ</a>
                 </div>
@@ -268,6 +503,60 @@
             <section class="cartoon"></section>
             <section class="tv-shows"></section>
         </div>
+        <footer>
+            <div class="footer-item">
+                <h3 class="footer-title">Giới thiệu</h3>
+                <p class="footer-content">PHOFLIX là một nền tảng giải trí trực tuyến hấp dẫn, mang đến cho người dùng trải nghiệm xem phim mượt mà và thú vị mà không bị gián đoạn bởi các quảng cáo phiền phức. Với bộ sưu tập phong phú của các bộ phim từ nhiều thể loại khác nhau, từ phim hành động, hài hước, tâm lý đến kinh dị, khoa học viễn tưởng, người dùng có thể dễ dàng tìm thấy những bộ phim yêu thích của mình mà không cần phải lo lắng về quảng cáo làm phiền.</p>  
+            </div>
+            <div class="footer-item">
+                <h3 class="footer-title">Liên hệ</h3>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <a href="tel:0789648381">
+                            <i class="fa-light fa-phone-volume"></i>
+                            <span class="contact-content">0789648381</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a target="_blank" href="https://www.facebook.com/PHODEV.2004/">
+                            <i class="fa-brands fa-square-facebook"></i>
+                            <span class="contact-content">Theo dõi tôi qua Facebook</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a target="_blank" href="https://www.instagram.com/phodziet.04/">
+                            <i class="fa-brands fa-instagram"></i>
+                            <span class="contact-content">Theo dõi tôi qua Instagram</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a target="_blank" href="https://github.com/phohoccode/">
+                            <i class="fa-brands fa-square-github"></i>
+                            <span class="contact-content">Theo dõi tôi qua Github</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a target="_blank" href="https://www.tiktok.com/@phohoccode.04/">
+                            <i class="fa-brands fa-tiktok"></i>
+                            <span class="contact-content">Theo dõi tôi qua Tiktok</span>
+                        </a>    
+                    </div> 
+                </div>
+            </div>
+            <div class="footer-item">
+                <h3 class="footer-title">Phản hồi</h3>
+                <form action="">
+                    <div class="form-input">
+                        <label>
+                            <i class="fa-light fa-message-lines"></i>
+                            Lời nhắn
+                        </label>
+                        <textarea placeholder="Hãy phản hồi một cách tích cực nhé!"></textarea>
+                    </div>
+                    <button class="send-mail">Gửi</button>
+                </form>
+            </div>
+        </footer>
     </div>
     <script defer type="module" src="./src/js/index.js"></script>
 </body>
