@@ -52,6 +52,7 @@
     left: 32px;
     bottom: 32px; 
     padding: 8px;  
+    width: 90%;
 }
 
 .slider-info h3 {
@@ -59,6 +60,9 @@
     margin-bottom: 12px;
     text-transform: uppercase;
     color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .slider-info__bottom {
@@ -99,6 +103,7 @@ section header {
     justify-content: space-between;
     font-size: 1.6rem;
     margin-bottom: 16px;
+    color: #fff;
 }
 
 section header .title-name {

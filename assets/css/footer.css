@@ -6,10 +6,11 @@ footer {
     padding: 16px;
     background-color: #4a4e69;
     border-radius: 4px;
+    flex-wrap: wrap;
 }
 
 .footer-item {
-    width: 33.33333%;
+    width: calc(33.33333% - 43px);
     color: #fff;
 }
 

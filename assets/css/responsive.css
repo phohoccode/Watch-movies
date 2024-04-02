@@ -1,85 +1,158 @@
 @media (max-width: 1024px) {
-
+  .main-page {
+    padding: 0 32px;
+  }
+  .main-page > header {
+    justify-content: space-between;
+    left: 32px;
+    right: 32px;
+    width: unset;
+    padding: 16px 0;
+  }
+  .bars,
+  .close {
+    display: block;
+  }
+  .menu-header.active {
+    opacity: 1;
+    transform: translateX(0);
+    padding: 20px 32px 20px 20px;
+  }
+  .menu-header {
+    inset: 0;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #22223b;
+    position: fixed;
+    z-index: 9999;
+    opacity: 0;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    transform: translateX(-100%);
+  }
+  .menu-header__item:hover {
+    outline: unset;
+  }
+  .close {
+    right: 32px;
+    top: 12px;
+  }
+  .item__list {
+    list-style: auto;
+    display: flex;
+    padding: 6px 44px;
+    width: unset;
+    position: unset;
+    background-color: unset;
+    max-height: unset;
+  }
+  .item__list > li {
+    width: calc(50% - 10px);
+  }
+  .menu-header__item:nth-child(6):after,
+  .menu-header__item:nth-child(5):after {
+    display: none;
+  }
+  .search {
+    flex: unset;
+  }
+  .search input {
+    width: 100%;
+  }
+  .movie {
+    width: 25%;
+  }
+  footer {
+    gap: 32px 0;
+  }
+  .footer-item {
+    width: 100%;
+  }
+  .send-mail {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
-
-} 
+  .main-page {
+    padding: 0 24px;
+  }
+  .movie {
+    width: 33.3333%;
+  }
+  .main-page > header {
+    left: 24px;
+    right: 24px;
+    padding: 16px 0;
+  }
+  .slider-info,
+  .background-movie__info {
+    left: 24px;
+    bottom: 24px;
+  }
+  .menu-header.active {
+    padding: 16px 24px 16px 16px;
+  }
+  .item__list > li {
+    width: 100%;
+  }
+  .close {
+    right: 24px;
+    top: 8px;
+  }
+}
 
 @media (max-width: 480px) {
-    *::-webkit-scrollbar {
-        width: 0;
-        height: 6px;
-      }
-    .main-page {
-        padding: 0 16px;
-    }
-    .main-page > header {
-        left: 16px;
-        right: 16px;
-        width: unset;
-        gap: 24px;
-    }
-    .menu-header {
-        display: none;
-    }
-    .bars {
-        display: block;
-    }
-    .menu-header__item {
-        
-    }
-    .menu-header__item:nth-child(4):after,
-    .menu-header__item:nth-child(5):after,
-    .item__list::after {
-        display: none;
-    }
-    .item__list {
-        list-style: unset;
-        display: flex;
-        padding: 16px 24px;
-        width: unset;
-        position: unset;
-        background-color: unset;
-    }
-    .item__list > li {
-        width: calc(50% - 10px);
-    }
-    .search input {
-        width: 84%;
-    }
-    .movie {
-        width: 50%;
-    }
-    .slide figure,
-    .background-movie figure {
-        height: 350px;
-    }
-    .movie figure {
-        height: 250px;
-    }
-    .slider-info,
-    .background-movie__info {
-        left: 12px;
-        bottom: 12px;
-    }
-    .background-movie__info h3 {
-        font-size: 2rem;
-    }
-    .info-bottom {
-        flex-wrap: wrap;
-    }
-    .view-iframe iframe {
-        height: 210px;
-    }
-    .episode {
-        padding: 8px;
-    }
-    footer {
-        flex-wrap: wrap;
-        gap: 32px;
-    }
-    .footer-item {
-        width: 100%;
-    }
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 6px;
+  }
+  .main-page {
+    padding: 0 16px;
+  }
+  .main-page > header {
+    left: 16px;
+    right: 16px;
+    width: unset;
+    gap: 24px;
+  }
+  .search input {
+    width: 84%;
+  }
+  .movie {
+    width: 50%;
+  }
+  .slide figure,
+  .background-movie figure {
+    height: 280px;
+  }
+  .movie figure {
+    height: 250px;
+  }
+  .name-movie {
+    font-size: 2rem;
+  }
+  .slider-info,
+  .background-movie__info {
+    left: 12px;
+    bottom: 12px;
+  }
+  .background-movie__info h3 {
+    font-size: 2rem;
+  }
+  .info-bottom {
+    flex-wrap: wrap;
+  }
+  section header {
+    font-size: 1.4rem;
+  }
+  .view-iframe iframe {
+    height: 210px;
+  }
+  .episode {
+    padding: 8px;
+  }
+  .footer-item {
+    width: 100%;
+  }
 }

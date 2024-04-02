@@ -1,4 +1,4 @@
-import { $, $$,searchButton, changePages,sendMail, handleClickButtonSearch, handleClickChangePage, handleFeedback } from "./base.js"
+import { $, $$, header, footer, handleClickHeader,renderComponent, handleFeedback } from "./base.js"
 import storage from "./localStorage.js"
 
 const wacthMovie = (() => {
@@ -38,13 +38,14 @@ const wacthMovie = (() => {
             $('.name-movie').innerText = valueNameMovie
         },
         start() {
+            renderComponent('./componentHTML/header.html', header)
+            renderComponent('./componentHTML/footer.html', footer)
             this.setDocumentTitleAndMovieName()
             this.renderEpisode(link_embed)
             this.setActiveMovieDefault()
             this.handleClickChangeEpisode()
-            handleClickButtonSearch(searchButton)
-            handleClickChangePage(changePages)
-            handleFeedback(sendMail)
+            handleClickHeader(header)
+            handleFeedback(footer)
         }
     }
 })()

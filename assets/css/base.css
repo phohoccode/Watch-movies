@@ -20,8 +20,8 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  border-radius: 2px;
-  background-color: #ccc;
+  border-radius: 3px;
+  background-color: rgb(74, 78, 105);
 }
 ::placeholder {
   color: #cccccc;
@@ -66,7 +66,6 @@ img {
 
 .content {
     background-color: var(--background-primary);
-    min-height: 100vh;
     padding-top: 100px;
     overflow-y: hidden;
 }
@@ -108,14 +107,8 @@ img {
     background-color: #3a86ff;
 }
 
-.current-page {
-    font-size: 1.6rem;
-    color: #fff;
-}
-
 .see-more {
     display: none;
-    /* display: flex; */
     justify-content: center;
     margin-bottom: 50px;
 }

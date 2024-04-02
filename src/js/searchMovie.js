@@ -1,4 +1,4 @@
-import { $,searchButton, content, changePages, sendMail, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie, handleFeedback } from "./base.js"
+import { $, content, header, footer, renderComponent, handleClickWatchMovie, handleFeedback, handleClickHeader } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
 import movies from "./component/movies.js"
 
@@ -45,10 +45,9 @@ const searchPage = (() => {
             element.innerHTML = htmls
         },
         handleEvent() {
-            handleClickButtonSearch(searchButton)
-            handleClickChangePage(changePages)
+            handleClickHeader(header)
             handleClickWatchMovie(content)
-            handleFeedback(sendMail)
+            handleFeedback(footer)
             
             seeMoreButton.addEventListener('click', () => {
                 index++
@@ -57,6 +56,8 @@ const searchPage = (() => {
             })
         },
         start() {
+            renderComponent('./componentHTML/header.html', header)
+            renderComponent('./componentHTML/footer.html', footer)
             this.fetchApi(limitDefault)
             this.handleEvent()
         }

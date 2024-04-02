@@ -1,4 +1,4 @@
-import { searchButton, changePages, sendMail, handleClickButtonSearch, handleClickChangePage, handleFeedback } from "./base.js"
+import { header, footer, handleClickHeader, handleFeedback, renderComponent } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
 import storage from "./localStorage.js"
 
@@ -72,9 +72,10 @@ const infoMovie = (() => {
         },
         start() {
             this.fetchApi()
-            handleClickButtonSearch(searchButton)
-            handleClickChangePage(changePages)
-            handleFeedback(sendMail)
+            renderComponent('./componentHTML/header.html', header)
+            renderComponent('./componentHTML/footer.html', footer)
+            handleClickHeader(header)
+            handleFeedback(footer)
         }
     }
 })()

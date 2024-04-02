@@ -1,5 +1,5 @@
 import fetchAPI from "./fectchAPI.js"
-import { $, $$, searchButton, content, sendMail, changePages, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie, handleFeedback } from "./base.js"
+import { $, $$, content, header, footer, renderComponent, handleClickHeader, handleClickWatchMovie, handleFeedback } from "./base.js"
 import movies from "./component/movies.js"
 import storage from "./localStorage.js"
 
@@ -52,12 +52,13 @@ const detailMovie = (() => {
             $$('.page')[0].classList.add('active')
         },
         handleEvent() {
-            handleClickButtonSearch(searchButton)
-            handleClickChangePage(changePages)
             handleClickWatchMovie(content)
-            handleFeedback(sendMail)
+            handleClickHeader(header)
+            handleFeedback(footer)
         },
         start() {
+            renderComponent('./componentHTML/header.html', header)
+            renderComponent('./componentHTML/footer.html', footer)
             this.fetchApi(page)
             this.renderPaginations(totalPages)
             this.setActivePageDefault()

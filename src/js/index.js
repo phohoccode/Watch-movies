@@ -1,4 +1,4 @@
-import { $, $$,searchButton, changePages, content, sendMail, handleClickButtonSearch, handleClickChangePage, handleClickWatchMovie, handleFeedback } from "./base.js"
+import { $, $$, header, footer, content,renderComponent, handleClickHeader, handleClickWatchMovie, handleFeedback } from "./base.js"
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "./fectchAPI.js"
 import fetchAPI from "./fectchAPI.js"
 import movies from "./component/movies.js"
@@ -178,10 +178,9 @@ const root = (() => {
                 screenWidth
             )
 
-            handleClickButtonSearch(searchButton)
-            handleClickChangePage(changePages)
+            handleClickHeader(header)
             handleClickWatchMovie(content)
-            handleFeedback(sendMail)
+            handleFeedback(footer)
 
             const wacthNows = $$('.wacth-now')
             wacthNows.forEach(wacthNow => {
@@ -200,16 +199,6 @@ const root = (() => {
                     })
                 }
             })
-
-            const bars = $('.bars')
-            const menuHeaderMobile = $('.menu-header.mobile')
-            bars.addEventListener('click', () => {
-                menuHeaderMobile.classList.add('active')
-            })
-            const close = $('.close')
-            close.addEventListener('click', () => {
-                menuHeaderMobile.classList.remove('active')
-            })
         },
         getNumberDisplayOnPage(elementAnimate, screenWidth) {
             const element = elementAnimate.children[0]
@@ -221,6 +210,8 @@ const root = (() => {
         },
         start() {
             this.fetchApi(page)
+            renderComponent('./componentHTML/header.html', header)
+            renderComponent('./componentHTML/footer.html', footer)
         }
     }
 })()
