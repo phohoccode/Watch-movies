@@ -1,4 +1,4 @@
-const listOfMoviesToWatchLater = JSON.parse(localStorage.getItem('listMoviesToWatchLater'))
+const listOfMoviesToWatchLater = JSON.parse(localStorage.getItem('listMoviesToWatchLater')) || []
 
 const movies = (data) => {
     return data.map(movie => `
@@ -11,7 +11,7 @@ const movies = (data) => {
                     </div>
                 </a>
                 <button data-slug="${movie.slug}" 
-                    class="add-movie ${listOfMoviesToWatchLater.some(item => item.slug === movie.slug) && 'active'}">
+                    class="add-movie ${listOfMoviesToWatchLater.some(item => item.slug === movie.slug) ? 'active' : ''}">
                     <i onclick="handleClickAddMovie(this)" class="icon-add fa-light fa-plus"></i>
                     <i onclick="handleClickRemoveMovie(this)" class="icon-remove fa-light fa-minus"></i>
                 </button>
