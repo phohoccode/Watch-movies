@@ -40,7 +40,7 @@
 }
 
 .menu-header__item:hover {
-    outline: 1px dotted #ffbe0b;
+    outline: 1px dashed #ffbe0b;
 }
 
 .menu-header__item:hover > a,
@@ -95,7 +95,7 @@
 
 .item__list > li a:hover {
     color: #ffbe0b;
-    outline: 1px dotted;
+    outline: 1px dashed;
 }
 
 .search {
@@ -115,7 +115,7 @@
 
 .search input:focus, 
 .search input:focus ~ button {
-    outline: 1px solid;
+    outline: 2px solid;
 }
 
 .search button {

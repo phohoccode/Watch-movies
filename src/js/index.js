@@ -1,8 +1,7 @@
-import { $, $$, header, footer, content,renderComponent, handleClickHeader, handleClickWatchMovie, handleFeedback } from "./base.js"
+import { $, $$, header, footer, content, renderComponent, handleClickHeader,handleClickAddMovie, handleClickRemoveMovie, cacheEpisodeDetails, handleClickWatchMovie, handleFeedback } from "./base.js"
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "./fectchAPI.js"
 import fetchAPI from "./fectchAPI.js"
 import movies from "./component/movies.js"
-import storage from "./localStorage.js"
 
 const root = (() => {
     let page = 1
@@ -11,6 +10,7 @@ const root = (() => {
     const televisonSeris = $('.television-seris ')
     const cartoon = $('.cartoon')
     const tvShows = $('.tv-shows')
+   
 
     return {
         fetchApi(currentPage) {
@@ -47,44 +47,44 @@ const root = (() => {
         },
         renderSlider(data) {
             const htmls = data.map(slider => `
-                <div class="slide">
-                    <figure>
-                        <img src="${slider.thumb_url.includes('https://img.phimapi.com') ? slider.thumb_url : 'https://img.phimapi.com/' + slider.thumb_url}" alt="">
-                    </figure>
-                    <div class="slider-info">
-                        <h3>${slider.name}</h3>
-                        <div class="slider-info__bottom">
-                            <button href="./watchMovie-page.html" class="wacth-now" data-slug="https://phimapi.com/phim/${slider.slug}">
-                                <i class="fa-solid fa-play"></i>
-                            Xem ngay
-                            </button>
-                            <span class="year">Xuất bản ${slider.year}</span>
+                    <div class="slide">
+                        <figure>
+                            <img src="${slider.thumb_url.includes('https://img.phimapi.com') ? slider.thumb_url : 'https://img.phimapi.com/' + slider.thumb_url}" alt="">
+                        </figure>
+                        <div class="movie-info">
+                            <h3>${slider.name}</h3>
+                            <div class="movie-info__bottom">
+                                <button href="./watchMovie-page.html" class="watch-now" data-slug="https://phimapi.com/phim/${slider.slug}">
+                                    <i class="fa-solid fa-play"></i>
+                                Xem ngay
+                                </button>
+                                <span class="year">${slider.year}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('')
+                `).join('')
             sliderInner.innerHTML = htmls
         },
         renderMovie(data, element, api) {
             const htmls = `
-                <header>
-                    <h3 class="title-name">${data.titlePage}</h3>
-                    <a class="watch-all" data-api="${api}">
-                        Xem tất cả
-                        <i class="fa-light fa-chevron-right"></i>
-                    </a>
-                </header>
-                <div class="movie-container">
-                    <button class="prev">
-                        <i class="fa-light fa-angle-left"></i>
-                    </button>
-                    <div class="movie-inner">
-                        ${movies(data.items)}
-                    </div>
-                    <button class="next">
-                        <i class="fa-light fa-angle-right"></i>
-                    </button>
-                </div>`
+                    <header>
+                        <h3 class="title-name">${data.titlePage}</h3>
+                        <a class="watch-all" data-api="${api}">
+                            Xem tất cả
+                            <i class="fa-light fa-chevron-right"></i>
+                        </a>
+                    </header>
+                    <div class="movie-container">
+                        <button class="prev">
+                            <i class="fa-light fa-angle-left"></i>
+                        </button>
+                        <div class="movie-inner">
+                            ${movies(data.items)}
+                        </div>
+                        <button class="next">
+                            <i class="fa-light fa-angle-right"></i>
+                        </button>
+                    </div>`
             element.innerHTML = htmls
         },
         handlePrevNextEvent(prevButton, nextButton, indexMovie, currentPage, maxMovies, screenWidth) {
@@ -182,18 +182,14 @@ const root = (() => {
             handleClickWatchMovie(content)
             handleFeedback(footer)
 
-            const wacthNows = $$('.wacth-now')
+            const wacthNows = $$('.watch-now')
             wacthNows.forEach(wacthNow => {
                 if (wacthNow) {
                     wacthNow.addEventListener('click', () => {
                         const API_KEY = wacthNow.dataset.slug
-                        console.log(API_KEY)
                         fetchAPI(API_KEY)
                             .then(data => {
-                                const link_embed = []
-                                data.episodes[0].server_data.forEach(link => link_embed.push(link))
-                                storage.set('link_embed', link_embed)
-                                storage.set('movie-name', data.movie.name)
+                                cacheEpisodeDetails(data)
                                 window.location.href = './watchMovie-page.html'
                             })
                     })

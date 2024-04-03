@@ -124,3 +124,52 @@ img {
 .see-more button:hover {
     opacity: .8;
 }
+
+.movie-info {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    padding: 8px;
+    width: 90%;
+}
+
+.movie-info h3 {
+    font-size: 4rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 2px 2px rgba(0,0,0,.5);
+}
+
+.movie-info__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.watch-now {
+    padding: 4px 8px;
+    color: #fff;
+    background-color: #ff006e;
+    border-radius: 3px;
+    font-size: 1.6rem;
+    transition: .3s;
+}
+
+.watch-now:hover {
+    background-color: rgba(255, 0, 110, .8);
+}
+
+.quality, .year, .episode_current {
+    font-size: 1.4rem;
+    color: #fff;
+    padding: 2px 4px;
+    background-color:#3a86ff;
+    border-radius: 2px;
+}
+
+

@@ -1,4 +1,4 @@
-import { header, footer, handleClickHeader, handleFeedback, renderComponent } from "./base.js"
+import { header, footer, handleClickHeader, handleFeedback,cacheEpisodeDetails, renderComponent } from "./base.js"
 import fetchAPI from "./fectchAPI.js"
 import storage from "./localStorage.js"
 
@@ -17,13 +17,7 @@ const infoMovie = (() => {
                         alert(`Link phim hiện tại đang hỏng :((`)
                         return
                     }
-                    const link_embed = []
-                    const titlePage = data.episodes[0].server_data[0].filename
-                    document.title = titlePage
-                    data.episodes[0].server_data.forEach(link => link_embed.push(link))
-                    storage.set('title-page', titlePage)
-                    storage.set('link_embed', link_embed)
-                    storage.set('movie-name', data.movie.name)
+                    cacheEpisodeDetails(data)
                     this.renderBackgroundMovie(data.movie, backgroundMovie)
                     this.renderInfoMovie(data.movie, infomationMovie)
                 })
@@ -34,10 +28,10 @@ const infoMovie = (() => {
                     <img src="${data.thumb_url}" alt="">
                 </figure>
 
-                <div class="background-movie__info">
+                <div class="movie-info">
                     <h3>${data.name}</h3>
-                    <div class="info-bottom">
-                        <a href="./watchMovie-page.html">
+                    <div class="movie-info__bottom">
+                        <a class="watch-now" href="./watchMovie-page.html">
                             <i class="fa-solid fa-play"></i>
                             Xem ngay
                         </a>
@@ -59,7 +53,6 @@ const infoMovie = (() => {
                     ${data.actor.map(name => `
                         <li>${name}</li>
                     `).join('')}
-
                 </ul>
                 <ul class="infomation-movie__category">
                     <h4>Thể loại</h4>

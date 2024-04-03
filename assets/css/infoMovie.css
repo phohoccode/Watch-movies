@@ -29,26 +29,6 @@
     gap: 6px;
 }
 
-.info-bottom a {
-    font-size: 1.6rem;
-    padding: 4px 8px;
-    border-radius: 4px;
-    background-color: #ff006e;
-    transition: .3s;
-    user-select: none;
-}
-
-.info-bottom a:hover {
-    opacity: .8;
-}
-
-.quality, .year, .episode_current {
-    font-size: 1.4rem;
-    color: #fff;
-    padding: 2px 4px;
-    background-color:#3a86ff;
-    border-radius: 2px;
-}
 
 .information-movie {
     margin: 32px 0;

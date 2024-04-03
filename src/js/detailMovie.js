@@ -14,6 +14,7 @@ const detailMovie = (() => {
             const API_KEY = `${storage.get('link-api')}?page=${currentPage}&limit=20`
             fetchAPI(API_KEY)
                 .then(data => {
+                    console.log(data.data)
                     this.renderAllMovie(data.data, allMovie)
                     document.title = data.data.seoOnPage.titleHead
                 })

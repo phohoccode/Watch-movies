@@ -11,7 +11,7 @@
   }
   .bars,
   .close {
-    display: block;
+    display: flex;
   }
   .menu-header.active {
     opacity: 1;
@@ -35,7 +35,7 @@
   }
   .close {
     right: 32px;
-    top: 12px;
+    top: 20px;
   }
   .item__list {
     list-style: auto;
@@ -62,6 +62,12 @@
   .movie {
     width: 25%;
   }
+  .movie-info h3 {
+    font-size: 3rem;
+  }
+  .add-movie  {
+    opacity: 1;
+  }
   footer {
     gap: 32px 0;
   }
@@ -85,8 +91,7 @@
     right: 24px;
     padding: 16px 0;
   }
-  .slider-info,
-  .background-movie__info {
+  .movie-info {
     left: 24px;
     bottom: 24px;
   }
@@ -98,7 +103,10 @@
   }
   .close {
     right: 24px;
-    top: 8px;
+    top: 16px;
+  }
+  .movie-info h3  {
+    font-size: 2rem;
   }
 }
 
@@ -116,6 +124,9 @@
     width: unset;
     gap: 24px;
   }
+  .menu-header.active {
+    padding: 8px 16px 8px 8px;
+  }
   .search input {
     width: 84%;
   }
@@ -132,13 +143,9 @@
   .name-movie {
     font-size: 2rem;
   }
-  .slider-info,
-  .background-movie__info {
+  .movie-info {
     left: 12px;
     bottom: 12px;
-  }
-  .background-movie__info h3 {
-    font-size: 2rem;
   }
   .info-bottom {
     flex-wrap: wrap;
@@ -146,10 +153,15 @@
   section header {
     font-size: 1.4rem;
   }
+  .close {
+    right: 16px;
+    top: 12px;
+  }
   .view-iframe iframe {
     height: 210px;
   }
   .episode {
+    font-size: 1.2rem;
     padding: 8px;
   }
   .footer-item {

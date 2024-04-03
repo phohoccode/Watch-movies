@@ -20,6 +20,7 @@ footer {
 }
 
 .footer-content {
+    text-align: justify;
     font-size: 1.6rem;
 }
 
