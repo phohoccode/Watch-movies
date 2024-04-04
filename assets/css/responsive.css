@@ -108,6 +108,10 @@
   .movie-info h3  {
     font-size: 2rem;
   }
+  #toast {
+    top: 24px;
+    right: 24px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -166,5 +170,25 @@
   }
   .footer-item {
     width: 100%;
+  }
+  #toast {
+    top: 16px;
+    right: 16px;
+  }
+  .toast {
+    width: 330px;
+    padding: 8px;
+  }
+  .toast__title {
+    font-size: 1.6rem;
+  }
+  .toast__message.toast--success {
+    font-size: 1.4rem;
+  }
+  .prev {
+    left: 4px;
+  }
+  .next {
+    right: 4px;
   }
 }
