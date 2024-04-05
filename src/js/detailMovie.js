@@ -1,7 +1,13 @@
-import fetchAPI from "./fectchAPI.js"
-import { $, $$, content, header, footer, renderComponent, handleClickHeader, handleClickWatchMovie, handleFeedback } from "./base.js"
-import movies from "./component/movies.js"
-import storage from "./localStorage.js"
+import fetchAPI from "../utils/fectchAPI.js"
+import movies from "../components/movies.js"
+import storage from "../utils/localStorage.js"
+import {$,$$} from "./base.js"
+import {header, handleHeader} from "../components/handleHeader.js"
+import {footer, handleFeedback}  from "../components/handleFooter.js"
+import handleWatchMovie from "../utils/handleWatchMovie.js"
+import componentRendering from "../utils/componentRendering.js"
+import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
+import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 
 const detailMovie = (() => {
     let page = 0
@@ -53,13 +59,13 @@ const detailMovie = (() => {
             $$('.page')[0].classList.add('active')
         },
         handleEvent() {
-            handleClickWatchMovie(content)
-            handleClickHeader(header)
-            handleFeedback(footer)
+            handleHeader()
+            handleWatchMovie()
+            handleFeedback()
         },
         start() {
-            renderComponent('./componentHTML/header.html', header)
-            renderComponent('./componentHTML/footer.html', footer)
+            componentRendering('./src/components/header.html', header)
+            componentRendering('./src/components/footer.html', footer)
             this.fetchApi(page)
             this.renderPaginations(totalPages)
             this.setActivePageDefault()

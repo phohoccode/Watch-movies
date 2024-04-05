@@ -1,6 +1,11 @@
-import { $, content, header, footer, handleClickWatchMovie, handleClickHeader, handleFeedback, renderComponent } from "./base.js";
-import storage from "./localStorage.js"
-import movies from "./component/movies.js"
+import movies from "../components/movies.js"
+import {header, handleHeader} from "../components/handleHeader.js"
+import {footer, handleFeedback}  from "../components/handleFooter.js"
+import handleWatchMovie from "../utils/handleWatchMovie.js"
+import componentRendering from "../utils/componentRendering.js"
+import storage from "../utils/localStorage.js"
+import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
+import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 
 const moviesToWatchLater = (() => {
     const listMoviesToWatchLater = document.querySelector('.listMoviesToWatchLater')
@@ -18,9 +23,9 @@ const moviesToWatchLater = (() => {
             element.innerHTML = movie
         },
         handleEvent() {
-            handleClickWatchMovie(content)
-            handleClickHeader(header)
-            handleFeedback(footer)
+            handleHeader()
+            handleWatchMovie()
+            handleFeedback()
 
             listMoviesToWatchLater.addEventListener('click', (e) => {
                 const remove = e.target.closest('.icon-remove')
@@ -30,10 +35,10 @@ const moviesToWatchLater = (() => {
             })
         },
         start() {
+            componentRendering('./src/components/header.html', header)
+            componentRendering('./src/components/footer.html', footer)
             this.renderMovieToWatchLater(listMoviesToWatchLater)
             this.handleEvent()
-            renderComponent('./componentHTML/header.html', header)
-            renderComponent('./componentHTML/footer.html', footer)
         }
     }
 })();

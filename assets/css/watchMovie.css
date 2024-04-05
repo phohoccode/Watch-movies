@@ -25,7 +25,12 @@
 }
 
 .episode {
-    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    width: calc(6.66666% - 11.5px);
+    min-height: 40px;
     background-color: var(--primry-color);
     font-size: 1.6rem;
     font-weight: 600;

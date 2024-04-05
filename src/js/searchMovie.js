@@ -1,6 +1,12 @@
-import { $, content, header, footer, renderComponent, handleClickWatchMovie, handleFeedback, handleClickHeader } from "./base.js"
-import fetchAPI from "./fectchAPI.js"
-import movies from "./component/movies.js"
+import { $ } from "./base.js"
+import fetchAPI from "../utils/fectchAPI.js"
+import movies from "../components/movies.js"
+import { header, handleHeader } from "../components/handleHeader.js"
+import { footer, handleFeedback } from "../components/handleFooter.js"
+import componentRendering from "../utils/componentRendering.js"
+import handleWatchMovie from "../utils/handleWatchMovie.js"
+import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
+import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 
 const searchPage = (() => {
     const allMovie = $('.all-movieFound')
@@ -14,17 +20,20 @@ const searchPage = (() => {
             const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
             fetchAPI(API_KEY)
                 .then(data => {
-                    console.log(data.data)
+                    console.log(data)
                     if (data.data.items.length === 0) {
                         this.handleError()
                         return
-                    } else {
-                        document.title = data.data.titlePage
-                        this.renderAllMovie(data.data, allMovie)
-                        if (data.data.items.length >= limitDefault) {
-                            seeMoreButton.style.display = 'flex'
-                        }
                     }
+                    document.title = data.data.titlePage
+                    this.renderAllMovie(data.data, allMovie)
+                    if (data.data.items.length >= limitDefault) {
+                        seeMoreButton.style.display = 'flex'
+                    }
+
+                })
+                .catch(err => {
+                    console.log('Error', err)
                 })
         },
         handleError() {
@@ -45,10 +54,10 @@ const searchPage = (() => {
             element.innerHTML = htmls
         },
         handleEvent() {
-            handleClickHeader(header)
-            handleClickWatchMovie(content)
-            handleFeedback(footer)
-            
+            handleHeader()
+            handleWatchMovie()
+            handleFeedback()
+
             seeMoreButton.addEventListener('click', () => {
                 index++
                 const limitNew = limitDefault * index
@@ -56,8 +65,8 @@ const searchPage = (() => {
             })
         },
         start() {
-            renderComponent('./componentHTML/header.html', header)
-            renderComponent('./componentHTML/footer.html', footer)
+            componentRendering('./src/components/header.html', header)
+            componentRendering('./src/components/footer.html', footer)
             this.fetchApi(limitDefault)
             this.handleEvent()
         }

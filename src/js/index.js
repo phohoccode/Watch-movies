@@ -1,7 +1,13 @@
-import { $, $$, header, footer, content, renderComponent, handleClickHeader,handleClickAddMovie, handleClickRemoveMovie, cacheEpisodeDetails, handleClickWatchMovie, handleFeedback } from "./base.js"
-import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "./fectchAPI.js"
-import fetchAPI from "./fectchAPI.js"
-import movies from "./component/movies.js"
+import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
+import fetchAPI from "../utils/fectchAPI.js"
+import movies from "../components/movies.js"
+import { $, content } from "./base.js"
+import { header, handleHeader } from "../components/handleHeader.js"
+import { footer, handleFeedback } from "../components/handleFooter.js"
+import handleWatchMovie from "../utils/handleWatchMovie.js"
+import componentRendering from "../utils/componentRendering.js"
+import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
+import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 
 const root = (() => {
     let page = 1
@@ -10,7 +16,6 @@ const root = (() => {
     const televisonSeris = $('.television-seris ')
     const cartoon = $('.cartoon')
     const tvShows = $('.tv-shows')
-   
 
     return {
         fetchApi(currentPage) {
@@ -20,11 +25,17 @@ const root = (() => {
                     this.renderSlider(data.items)
                     this.handleEvent()
                 })
+                .catch(err => {
+                    console.log('Error', err)
+                })
 
             fetchAPI(API_FEATUREFILM)
                 .then(data => {
                     this.renderMovie(data.data, featureFilm, API_FEATUREFILM)
                     this.handleEvent()
+                })
+                .catch(err => {
+                    console.log('Error', err)
                 })
 
             fetchAPI(API_TELEVISIONSERIES)
@@ -32,17 +43,26 @@ const root = (() => {
                     this.renderMovie(data.data, televisonSeris, API_TELEVISIONSERIES)
                     this.handleEvent()
                 })
+                .catch(err => {
+                    console.log('Error', err)
+                })
 
             fetchAPI(API_CARTOON)
                 .then(data => {
                     this.renderMovie(data.data, cartoon, API_CARTOON)
                     this.handleEvent()
                 })
+                .catch(err => {
+                    console.log('Error', err)
+                })
 
             fetchAPI(API_TVSHOWS)
                 .then(data => {
                     this.renderMovie(data.data, tvShows, API_TVSHOWS)
                     this.handleEvent()
+                })
+                .catch(err => {
+                    console.log('Error', err)
                 })
         },
         renderSlider(data) {
@@ -133,6 +153,10 @@ const root = (() => {
                 currentPageCartoon,
                 currentPageTvShows
 
+            handleHeader()
+            handleWatchMovie()
+            handleFeedback()
+
             this.handlePrevNextEvent(
                 $('.slider-container .prev'),
                 $('.slider-container .next'),
@@ -177,24 +201,6 @@ const root = (() => {
                 maxMovies,
                 screenWidth
             )
-
-            handleClickHeader(header)
-            handleClickWatchMovie(content)
-            handleFeedback(footer)
-
-            const wacthNows = $$('.watch-now')
-            wacthNows.forEach(wacthNow => {
-                if (wacthNow) {
-                    wacthNow.addEventListener('click', () => {
-                        const API_KEY = wacthNow.dataset.slug
-                        fetchAPI(API_KEY)
-                            .then(data => {
-                                cacheEpisodeDetails(data)
-                                window.location.href = './watchMovie-page.html'
-                            })
-                    })
-                }
-            })
         },
         getNumberDisplayOnPage(elementAnimate, screenWidth) {
             const element = elementAnimate.children[0]
@@ -206,8 +212,8 @@ const root = (() => {
         },
         start() {
             this.fetchApi(page)
-            renderComponent('./componentHTML/header.html', header)
-            renderComponent('./componentHTML/footer.html', footer)
+            componentRendering('./src/components/header.html', header)
+            componentRendering('./src/components/footer.html', footer)
         }
     }
 })()

@@ -77,6 +77,9 @@
   .send-mail {
     width: 100%;
   }
+  .episode {
+    width: calc(12.5% - 11px);
+  }
 }
 
 @media (max-width: 768px) {
@@ -111,6 +114,10 @@
   #toast {
     top: 24px;
     right: 24px;
+  }
+  .episode {
+    font-size: 1.4rem;
+    width: calc(16.66666% - 10px);
   }
 }
 
@@ -166,7 +173,7 @@
   }
   .episode {
     font-size: 1.2rem;
-    padding: 8px;
+    width: calc(25% - 28px);
   }
   .footer-item {
     width: 100%;
@@ -176,7 +183,7 @@
     right: 16px;
   }
   .toast {
-    width: 330px;
+    width: 320px;
     padding: 8px;
   }
   .toast__title {

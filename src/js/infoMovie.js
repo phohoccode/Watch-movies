@@ -1,6 +1,9 @@
-import { header, footer, handleClickHeader, handleFeedback,cacheEpisodeDetails, renderComponent } from "./base.js"
-import fetchAPI from "./fectchAPI.js"
-import storage from "./localStorage.js"
+import fetchAPI from "../utils/fectchAPI.js"
+import storage from "../utils/localStorage.js"
+import {header, handleHeader} from "../components/handleHeader.js"
+import {footer, handleFeedback}  from "../components/handleFooter.js"
+import componentRendering from "../utils/componentRendering.js"
+import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
 
 const infoMovie = (() => {
     const backgroundMovie = document.querySelector('.background-movie')
@@ -9,17 +12,18 @@ const infoMovie = (() => {
     return {
         fetchApi() {
             const API_MOVIE = storage.get('link-slug')
-
             fetchAPI(API_MOVIE)
                 .then(data => {
-                    console.log(data)
                     if (data.status === false) {
                         alert(`Link phim hiện tại đang hỏng :((`)
                         return
                     }
-                    cacheEpisodeDetails(data)
+                    setTitleAndStoreData(data)
                     this.renderBackgroundMovie(data.movie, backgroundMovie)
                     this.renderInfoMovie(data.movie, infomationMovie)
+                })
+                .catch(err => {
+                    console.log('Error', err)
                 })
         },
         renderBackgroundMovie(data, element) {
@@ -65,10 +69,10 @@ const infoMovie = (() => {
         },
         start() {
             this.fetchApi()
-            renderComponent('./componentHTML/header.html', header)
-            renderComponent('./componentHTML/footer.html', footer)
-            handleClickHeader(header)
-            handleFeedback(footer)
+            componentRendering('./src/components/header.html', header)
+            componentRendering('./src/components/footer.html', footer)
+            handleHeader()
+            handleFeedback()
         }
     }
 })()

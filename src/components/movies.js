@@ -10,8 +10,8 @@ const renderButton = (movie) => {
             data-slug="${movie.slug}"
             title="${title}"
             class="add-movie ${activeClass}">
-                <i onclick="handleClickAddMovie(this)" class="icon-add fa-light fa-plus"></i>
-                <i onclick="handleClickRemoveMovie(this)" class="icon-remove fa-light fa-minus"></i>
+                <i onclick="handleAddMovieToWatchLater(this)" class="icon-add fa-light fa-plus"></i>
+                <i onclick="handleRemoveMovieToWatchLater(this)" class="icon-remove fa-light fa-minus"></i>
         </button>
     `
 }
