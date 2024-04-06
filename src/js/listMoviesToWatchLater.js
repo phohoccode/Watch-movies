@@ -1,11 +1,13 @@
 import movies from "../components/movies.js"
-import {header, handleHeader} from "../components/handleHeader.js"
-import {footer, handleFeedback}  from "../components/handleFooter.js"
+import { header, footer } from "./base.js"
+import handleHeader from "../utils/handleHeader.js"
+import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import storage from "../utils/localStorage.js"
 import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
 import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
+import renderHeader from "../components/renderHeader.js"
 
 const moviesToWatchLater = (() => {
     const listMoviesToWatchLater = document.querySelector('.listMoviesToWatchLater')
@@ -35,7 +37,7 @@ const moviesToWatchLater = (() => {
             })
         },
         start() {
-            componentRendering('./src/components/header.html', header)
+            renderHeader(header)
             componentRendering('./src/components/footer.html', footer)
             this.renderMovieToWatchLater(listMoviesToWatchLater)
             this.handleEvent()

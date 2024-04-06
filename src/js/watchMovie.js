@@ -1,8 +1,9 @@
-import {$,$$} from "./base.js"
 import storage from "../utils/localStorage.js"
-import {header, handleHeader} from "../components/handleHeader.js"
-import {footer, handleFeedback}  from "../components/handleFooter.js"
+import {$,$$, header, footer } from "./base.js"
+import handleHeader from "../utils/handleHeader.js"
+import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
+import renderHeader from "../components/renderHeader.js"
 
 const wacthMovie = (() => {
     const iframe = $('iframe')
@@ -41,7 +42,7 @@ const wacthMovie = (() => {
             $('.name-movie').innerText = valueNameMovie
         },
         start() {
-            componentRendering('./src/components/header.html', header)
+            renderHeader(header)
             componentRendering('./src/components/footer.html', footer)
             this.setDocumentTitleAndMovieName()
             this.renderEpisode(link_embed)

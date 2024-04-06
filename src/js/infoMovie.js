@@ -1,9 +1,11 @@
 import fetchAPI from "../utils/fectchAPI.js"
 import storage from "../utils/localStorage.js"
-import {header, handleHeader} from "../components/handleHeader.js"
-import {footer, handleFeedback}  from "../components/handleFooter.js"
+import { header, footer } from "./base.js"
+import handleHeader from "../utils/handleHeader.js"
+import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
 import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
+import renderHeader from "../components/renderHeader.js"
 
 const infoMovie = (() => {
     const backgroundMovie = document.querySelector('.background-movie')
@@ -69,7 +71,7 @@ const infoMovie = (() => {
         },
         start() {
             this.fetchApi()
-            componentRendering('./src/components/header.html', header)
+            renderHeader(header)
             componentRendering('./src/components/footer.html', footer)
             handleHeader()
             handleFeedback()

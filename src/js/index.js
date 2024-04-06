@@ -1,13 +1,14 @@
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import movies from "../components/movies.js"
-import { $, content } from "./base.js"
-import { header, handleHeader } from "../components/handleHeader.js"
-import { footer, handleFeedback } from "../components/handleFooter.js"
+import { $, content, header, footer } from "./base.js"
+import handleHeader from "../utils/handleHeader.js"
+import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
 import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
+import renderHeader from "../components/renderHeader.js"
 
 const root = (() => {
     let page = 1
@@ -212,7 +213,7 @@ const root = (() => {
         },
         start() {
             this.fetchApi(page)
-            componentRendering('./src/components/header.html', header)
+            renderHeader(header)
             componentRendering('./src/components/footer.html', footer)
         }
     }

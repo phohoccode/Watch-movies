@@ -38,16 +38,12 @@
     top: 20px;
   }
   .item__list {
-    list-style: auto;
     display: flex;
-    padding: 6px 44px;
+    padding: 6px 12px;
     width: unset;
     position: unset;
     background-color: unset;
     max-height: unset;
-  }
-  .item__list > li {
-    width: calc(50% - 10px);
   }
   .menu-header__item:nth-child(6):after,
   .menu-header__item:nth-child(5):after {
@@ -102,7 +98,7 @@
     padding: 16px 24px 16px 16px;
   }
   .item__list > li {
-    width: 100%;
+    width: calc(50% - 6px);
   }
   .close {
     right: 24px;
@@ -197,5 +193,8 @@
   }
   .next {
     right: 4px;
+  }
+  .reset-value {
+    right: 40px;
   }
 }

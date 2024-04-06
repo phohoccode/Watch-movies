@@ -2,13 +2,11 @@ const listOfMoviesToWatchLaterStorage = JSON.parse(localStorage.getItem('listMov
 
 const renderButton = (movie) => {
     const isMovieSaved = listOfMoviesToWatchLaterStorage.some(item => item.slug === movie.slug)
-    const title = isMovieSaved ? 'Xóa khỏi danh sách phim đã lưu' : 'Lưu phim vào danh sách phim đã lưu'
     const activeClass = isMovieSaved ? 'active' : ''
 
     return `
         <button 
             data-slug="${movie.slug}"
-            title="${title}"
             class="add-movie ${activeClass}">
                 <i onclick="handleAddMovieToWatchLater(this)" class="icon-add fa-light fa-plus"></i>
                 <i onclick="handleRemoveMovieToWatchLater(this)" class="icon-remove fa-light fa-minus"></i>

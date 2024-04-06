@@ -10,9 +10,6 @@ const handleRemoveMovieToWatchLater = (element) => {
             storage.set('listMoviesToWatchLater', listOfMoviesToWatchLaterNew)
         }
         addMovie.classList.remove('active')
-        toastMessege({
-            title: ''
-        })
     }
 }
 export default handleRemoveMovieToWatchLater

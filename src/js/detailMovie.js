@@ -1,13 +1,14 @@
 import fetchAPI from "../utils/fectchAPI.js"
 import movies from "../components/movies.js"
 import storage from "../utils/localStorage.js"
-import {$,$$} from "./base.js"
-import {header, handleHeader} from "../components/handleHeader.js"
-import {footer, handleFeedback}  from "../components/handleFooter.js"
+import { $,$$, header, footer } from "./base.js"
+import handleHeader from "../utils/handleHeader.js"
+import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
 import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
+import renderHeader from "../components/renderHeader.js"
 
 const detailMovie = (() => {
     let page = 0
@@ -64,7 +65,7 @@ const detailMovie = (() => {
             handleFeedback()
         },
         start() {
-            componentRendering('./src/components/header.html', header)
+            renderHeader(header)
             componentRendering('./src/components/footer.html', footer)
             this.fetchApi(page)
             this.renderPaginations(totalPages)

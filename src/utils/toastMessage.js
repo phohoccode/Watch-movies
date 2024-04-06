@@ -50,6 +50,8 @@ const renderMessage = (element, title, message, type, duration) => {
             clearTimeout(autoRemoveToast)
         }
     })
-    element.appendChild(toastChild)
+    if (!element.contains(toastChild)) {
+        element.appendChild(toastChild)
+    }
 }
 export default toastMessege

@@ -10,7 +10,7 @@ const handleAddMovieToWatchLater = (element) => {
     if (linkSlug) {
          fetchAPI(linkSlug)
             .then(data => {
-                if (!newWatchLaterMoviesList.some(item => item.slug === data.movie.slug)) {
+                if (!newWatchLaterMoviesList.find(item => item.slug === data.movie.slug)) {
                     newWatchLaterMoviesList.push(data.movie)
                     storage.set('listMoviesToWatchLater', newWatchLaterMoviesList)
                     toastMessege({
@@ -20,6 +20,9 @@ const handleAddMovieToWatchLater = (element) => {
                         duration: 3000,
                     })
                 }
+            })
+            .catch(err => {
+                console.log('Error', err)
             })
     }
 }
