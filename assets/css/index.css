@@ -63,6 +63,7 @@ section header {
 }
 
 section header .title-name {
+    margin-right: 12px;
     color: #fff;
     font-weight: 400;
     text-transform: uppercase;

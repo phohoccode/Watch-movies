@@ -1,7 +1,7 @@
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import movies from "../components/movies.js"
-import { $, content, header, footer } from "./base.js"
+import { $, content, header, footer } from "../utils/base.js"
 import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
@@ -32,6 +32,7 @@ const root = (() => {
 
             fetchAPI(API_FEATUREFILM)
                 .then(data => {
+                    console.log(data)
                     this.renderMovie(data.data, featureFilm, API_FEATUREFILM)
                     this.handleEvent()
                 })

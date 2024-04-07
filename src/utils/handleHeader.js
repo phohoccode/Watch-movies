@@ -1,4 +1,4 @@
-import {$, header } from "../js/base.js"
+import {$, header } from "../utils/base.js"
 import storage from "./localStorage.js"
 import handleDetailPages from "./handleDetailPages.js"
 

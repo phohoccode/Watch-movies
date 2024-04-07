@@ -1,5 +1,5 @@
 import storage from "../utils/localStorage.js"
-import {$,$$, header, footer } from "./base.js"
+import {$,$$, header, footer } from "../utils/base.js"
 import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"

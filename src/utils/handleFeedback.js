@@ -1,4 +1,4 @@
-import { $, footer } from "../js/base.js"
+import { $, footer } from "../utils/base.js"
 
 const handleFeedback = () => {
     footer.addEventListener('click', (e) => {
