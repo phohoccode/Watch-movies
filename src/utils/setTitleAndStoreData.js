@@ -1,14 +1,17 @@
 import storage from "../utils/localStorage.js"
 
 const setTitleAndStoreData = (data) => {
-    const link_embed = []
     const titlePage = data.episodes[0].server_data[0].filename
-    if (titlePage) {
-        document.title = titlePage
+    const movieName = data.movie.name
+    const serverData = data.episodes[0].server_data
+    if (!titlePage && !movieName && !serverData) {
+        console.log('Title page or movie name or sever data not found!')
+        return
     }
-    data.episodes[0].server_data.forEach(link => link_embed.push(link))
+    const link_embed = serverData.map(link => link)
+    document.title = titlePage
     storage.set('title-page', titlePage)
     storage.set('link_embed', link_embed)
-    storage.set('movie-name', data.movie.name)
+    storage.set('movie-name', movieName)
 }
 export default setTitleAndStoreData

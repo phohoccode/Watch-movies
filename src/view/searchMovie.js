@@ -22,7 +22,7 @@ const searchPage = (() => {
             const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
             fetchAPI(API_KEY)
                 .then(data => {
-                    if (data.data.items.length === 0) {
+                    if (data?.data?.items?.length === 0) {
                         this.handleError()
                         return
                     }
@@ -41,7 +41,7 @@ const searchPage = (() => {
         handleSuccess(data) {
             document.title = data.data.titlePage
             this.renderAllMovie(data.data, allMovie)
-            if (data.data.items.length >= limitDefault) {
+            if (data?.data?.items.length >= limitDefault) {
                 seeMoreButton.style.display = 'flex'
             }
         },
@@ -51,7 +51,7 @@ const searchPage = (() => {
                     <div class="title-name">Kết quả tìm kiếm cho từ khóa: ${valueSearch}</div>
                 </header>
                 <div class="movies">
-                    ${movies(data.items)}
+                    ${movies(data?.items)}
                 </div>
             `
             element.innerHTML = htmls
@@ -65,7 +65,7 @@ const searchPage = (() => {
                 const moviesDisplayed = document.querySelectorAll('.movie').length
                 if (moviesDisplayed < limitNew) {
                     toastMessege({
-                        title: 'Đã hiển thị tất cả phim!',
+                        title: 'Đã hiển thị tất cả phim',
                         message: 'Phim sẽ được cập nhật thêm',
                         type: 'error'
                     })

@@ -13,7 +13,7 @@ const wacthMovie = (() => {
     return {
         renderEpisode(data) {
             const htmls = data.map((episode, index) => `
-                <div class="episode" data-index="${index}" data-linkEmbed="${episode.link_embed}">Tập ${++index}</div>
+                <div class="episode" data-index="${index}" data-linkEmbed="${episode?.link_embed}">Tập ${++index}</div>
             `).join('')
             episodes.innerHTML = htmls
         },

@@ -1,14 +1,15 @@
-import fetchAPI from "../utils/fectchAPI.js"
+import { $, $$, header, footer } from "../utils/base.js"
+import renderHeader from "../components/renderHeader.js"
 import movies from "../components/movies.js"
+import fetchAPI from "../utils/fectchAPI.js"
 import storage from "../utils/localStorage.js"
-import { $,$$, header, footer } from "../utils/base.js"
 import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
 import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
-import renderHeader from "../components/renderHeader.js"
+import toastMessege from "../utils/toastMessage.js"
 
 const detailMovie = (() => {
     let page = 0
@@ -21,9 +22,13 @@ const detailMovie = (() => {
             const API_KEY = `${storage.get('link-api')}?page=${currentPage}&limit=20`
             fetchAPI(API_KEY)
                 .then(data => {
-                    console.log(data.data)
-                    this.renderAllMovie(data.data, allMovie)
+                    const titleHead = data.data.seoOnPage.titleHead
+                    if (!titleHead) {
+                        console.log('Title head not found!')
+                        return
+                    }
                     document.title = data.data.seoOnPage.titleHead
+                    this.renderAllMovie(data.data, allMovie)
                 })
         },
         renderAllMovie(data, element) {
@@ -45,11 +50,6 @@ const detailMovie = (() => {
                 page.innerText = i + 1
                 page.setAttribute('data-index', i + 1)
                 paginations.appendChild(page)
-                page.addEventListener('click', () => {
-                    const index = page.dataset.index
-                    this.fetchApi(index)
-                    this.setActivePage(page)
-                })
             }
         },
         setActivePage(element) {
@@ -63,6 +63,19 @@ const detailMovie = (() => {
             handleHeader()
             handleWatchMovie()
             handleFeedback()
+
+            const paginations = $('.paginations')
+            paginations.addEventListener('click', (e) => {
+                const page = e.target.closest('.page')
+                const index = page.dataset.index
+                this.fetchApi(index)
+                this.setActivePage(page)
+                toastMessege({
+                    title: 'Chuyển trang thành công!',
+                    message: `Bạn đang ở trang thứ ${index}`,
+                    type: 'success'
+                })
+            })
         },
         start() {
             renderHeader(header)

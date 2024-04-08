@@ -6,7 +6,6 @@ const handleSearch = (inputSearchValue) => {
     if (inputSearchValue !== '') {
         storage.set('value-search', inputSearchValue)
         window.location.href = './search-page.html'
-        
     }
 }
 

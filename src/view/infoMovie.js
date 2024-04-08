@@ -6,6 +6,7 @@ import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
 import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
 import renderHeader from "../components/renderHeader.js"
+import toastMessege from "../utils/toastMessage.js"
 
 const infoMovie = (() => {
     const backgroundMovie = document.querySelector('.background-movie')
@@ -17,7 +18,11 @@ const infoMovie = (() => {
             fetchAPI(API_MOVIE)
                 .then(data => {
                     if (data.status === false) {
-                        alert(`Link phim hiện tại đang hỏng :((`)
+                        toastMessege({
+                            title: 'Tải phim thất bại',
+                            message: 'Link phim hiện tại đang hỏng',
+                            type: 'error'
+                        })
                         return
                     }
                     setTitleAndStoreData(data)

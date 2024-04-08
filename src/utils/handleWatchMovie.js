@@ -6,18 +6,18 @@ import { $ } from "../utils/base.js"
 
 const handleWatchNowSlide = (element) => {
     const linkSlug = element.dataset.slug
-    if (linkSlug) {
-        fetchAPI(linkSlug)
-            .then(data => {
-                setTitleAndStoreData(data)
-                window.location.href = './watchMovie-page.html'
-            })
-            .catch(err => {
-                console.log('Error', err)
-            })
-    } else {
+    if (!linkSlug) {
         console.log('Error link slug')
+        return
     }
+    fetchAPI(linkSlug)
+        .then(data => {  
+            setTitleAndStoreData(data)
+            window.location.href = './watchMovie-page.html'
+        })
+        .catch(err => {
+            console.log('Error', err)
+        })
 }
 
 const handleWatchMovie = () => {
@@ -31,9 +31,11 @@ const handleWatchMovie = () => {
         }
         if (movie) {
             const linkSlug = movie.dataset.slug
-            if (linkSlug) {
-                storage.set('link-slug', linkSlug)
+            if (!linkSlug) {
+                console.log('Link slug not found!')
+                return
             }
+            storage.set('link-slug', linkSlug)
         }
         if (wacthAll) {
             handleDetailPages(wacthAll)

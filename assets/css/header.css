@@ -62,15 +62,17 @@
 }
 
 .menu-header__item:hover .item__list {
-    display: flex;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .item__list {
+    display: flex;
     width: 600px;
     max-height: 80vh;
     overflow-y: auto;
     overscroll-behavior-y: none;
-    display: none;
+    opacity: 0;
     flex-wrap: wrap;
     gap: 12px;
     list-style: none;
@@ -80,6 +82,9 @@
     position: absolute;
     top: 50px;
     z-index: 100;
+    pointer-events: none;
+    transition: .2s;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .item__list > li {
     width: calc(33.3333% - 8px);
@@ -112,8 +117,9 @@
     font-size: 1.6rem;
     color: #fff;
     border-radius: 6px 0 0 6px;
+    transition: .3s;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
 
 .search-btn {
     width: 40px;

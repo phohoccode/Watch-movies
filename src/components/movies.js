@@ -1,9 +1,9 @@
-const listOfMoviesToWatchLaterStorage = JSON.parse(localStorage.getItem('listMoviesToWatchLater')) || []
+import storage from "../utils/localStorage.js"
 
 const renderButton = (movie) => {
-    const isMovieSaved = listOfMoviesToWatchLaterStorage.some(item => item.slug === movie.slug)
+    const listOfMoviesToWatchLaterStorage = storage.get('listMoviesToWatchLater')
+    const isMovieSaved = listOfMoviesToWatchLaterStorage.find(item => item.slug === movie.slug)
     const activeClass = isMovieSaved ? 'active' : ''
-
     return `
         <button 
             data-slug="${movie.slug}"
@@ -27,11 +27,10 @@ const movies = (data) => {
                     </div>
                 </a>
                 ${renderButton(movie)}
-                <span class="language">${movie.lang}</span>
+                <span class="status">${movie.lang}</span>
             </figure>
             <a href="./infoMovie-page.html" class="movie-name">${movie.name}</a>
         </div>
     `).join('')
 }
-
 export default movies

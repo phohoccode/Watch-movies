@@ -90,7 +90,8 @@ form {
     border-radius: 4px;
     background-color: #fff;
     color: #000;
-    transition: .5s;
+    transition: .3s;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .send-mail:hover {

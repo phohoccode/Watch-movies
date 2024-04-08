@@ -38,6 +38,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: .3s;
+}
+
+.prev:hover, .next:hover {
+    color: #ffbe0b;
 }
 
 .prev {
@@ -94,22 +99,24 @@ section header a:hover {
     border-radius: 3px;
     overflow: hidden;
     position: relative;
+    border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .movie figure img {
     transition: .3s;
 }
 
-.language {
+.status {
     position: absolute;
-    top: 6px;
+    top: 4px;
+    right: 4px;
     font-size: 1.4rem;
-    right: 6px;
     text-transform: uppercase;
     color: #fff;
     padding: 4px 6px;
     background-color: var(--primry-color);
     border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .movie-name {
@@ -163,6 +170,11 @@ section header a:hover {
     color: #fff;
     background-color: rgba(0,0,0,.5);
     backdrop-filter: blur(10px);
+    border-radius: 2px;
+}
+
+.add-movie:hover {
+    color: #ffbe0b;
 }
 
 .add-movie .icon-add,

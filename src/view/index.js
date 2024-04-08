@@ -32,7 +32,6 @@ const root = (() => {
 
             fetchAPI(API_FEATUREFILM)
                 .then(data => {
-                    console.log(data)
                     this.renderMovie(data.data, featureFilm, API_FEATUREFILM)
                     this.handleEvent()
                 })
@@ -119,7 +118,6 @@ const root = (() => {
                         if (indexMovie > 0) {
                             indexMovie--
                         }
-                        console.log('index: ', indexMovie, 'currentPage', currentPage)
                         elementAnimate.style.transform = `translate3d(-${indexMovie * widthElement}px, 0, 0)`
                     }
                 })
@@ -134,7 +132,6 @@ const root = (() => {
                         if (indexMovie < maxMovies) {
                             indexMovie++
                         }
-                        console.log('index: ', indexMovie, 'currentPage', currentPage)
                         elementAnimate.style.transform = `translate3d(-${indexMovie * widthElement}px, 0, 0)`
                     }
                 })
