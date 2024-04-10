@@ -105,6 +105,9 @@ img {
 }
 
 .page.active {
+    cursor: not-allowed;
+    user-select: none;
+    pointer-events: none;
     background-color: #3a86ff;
 }
 
@@ -175,5 +178,6 @@ img {
     border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 
 

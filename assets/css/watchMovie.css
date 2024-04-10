@@ -45,5 +45,8 @@
 }
 
 .episode.active {
+    cursor: not-allowed;
+    user-select: none;
+    pointer-events: none;
     background-color: #3a86ff;
 }

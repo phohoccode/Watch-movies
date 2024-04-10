@@ -1,28 +1,26 @@
+import { $, header, footer } from "../utils/base.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import storage from "../utils/localStorage.js"
-import { header, footer } from "../utils/base.js"
 import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
 import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
 import renderHeader from "../components/renderHeader.js"
 import toastMessege from "../utils/toastMessage.js"
+import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
 
 const infoMovie = (() => {
-    const backgroundMovie = document.querySelector('.background-movie')
-    const infomationMovie = document.querySelector('.information-movie')
+    const backgroundMovie = $('.background-movie')
+    const infomationMovie = $('.information-movie')
     
     return {
         fetchApi() {
             const API_MOVIE = storage.get('link-slug')
             fetchAPI(API_MOVIE)
                 .then(data => {
-                    if (data.status === false) {
-                        toastMessege({
-                            title: 'Tải phim thất bại',
-                            message: 'Link phim hiện tại đang hỏng',
-                            type: 'error'
-                        })
+                    console.log(data)
+                    if (data.status === false || data.episodes[0].server_data.length === 0) {
+                        hanleWhenDowloadingMoviesFail()
                         return
                     }
                     setTitleAndStoreData(data)
@@ -38,7 +36,6 @@ const infoMovie = (() => {
                 <figure>
                     <img src="${data.thumb_url}" alt="">
                 </figure>
-
                 <div class="movie-info">
                     <h3>${data.name}</h3>
                     <div class="movie-info__bottom">

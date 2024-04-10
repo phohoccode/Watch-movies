@@ -22,8 +22,9 @@ const renderMessage = (element, title, message, type, duration) => {
     }, duration + 1000)
 
     const icons = {
-        success: `fa-regular fa-check`,
-        error: `fa-regular fa-exclamation`
+        success: `fa-regular fa-check fa-bounce`,
+        error: `fa-regular fa-exclamation fa-bounce`,
+        welcome: `fa-light fa-hands-clapping fa-bounce`
     }
     const icon = icons[type]
     const delay = (duration / 1000).toFixed(2)

@@ -1,6 +1,6 @@
 footer {
     max-width: 1400px;
-    margin: 32px auto;
+    margin: 32px 0;
     display: flex;
     gap: 64px;
     padding: 16px;

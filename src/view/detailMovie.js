@@ -69,12 +69,16 @@ const detailMovie = (() => {
                 const page = e.target.closest('.page')
                 const index = page.dataset.index
                 this.fetchApi(index)
+                document.body.scrollTop = 0
+                document.documentElement.scrollTop = 0
                 this.setActivePage(page)
-                toastMessege({
-                    title: 'Chuyển trang thành công!',
-                    message: `Bạn đang ở trang thứ ${index}`,
-                    type: 'success'
-                })
+                setTimeout(() => {
+                    toastMessege({
+                        title: 'Chuyển trang thành công!',
+                        message: `Bạn đang ở trang thứ ${index}`,
+                        type: 'success'
+                    })
+                }, 1000)
             })
         },
         start() {
