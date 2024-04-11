@@ -35,8 +35,6 @@ html {
   box-sizing: border-box;
 }
 body {
-  max-width: 1400px;
-  margin: 0 auto;
   background-color: var(--background-primary);
 }
 button {
@@ -62,6 +60,7 @@ img {
 
 .main-page {
     position: relative;
+    padding: 0 64px;
 }
 
 .content {
@@ -93,7 +92,7 @@ img {
     font-size: 1.6rem;
     padding: 4px 12px;
     font-weight: 600;
-    background-color: #ffbe0b;
+    background-color: var(--primry-color);
     cursor: pointer;
     border-radius: 3px;
     transition: .3s;
@@ -121,7 +120,7 @@ img {
     font-size: 1.6rem;
     padding: 8px 16px;
     border-radius: 4px;
-    background-color: #ffbe0b;
+    background-color: var(--primry-color);
     transition: .3s;
 }
 

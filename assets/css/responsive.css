@@ -1,3 +1,28 @@
+@media (max-width: 1440px) {
+  .main-page {
+    padding: 0 48px;
+  }
+  .main-page > header {
+    left: 48px;
+    right: 48px;
+  }
+  .search input {
+    width: 300px;
+  }
+  .item__list {
+    width: 480px;
+  }
+  .movie {
+    width: 20%;
+  }
+  .menu-header__item {
+    font-size: 1.5rem;
+  }
+  .item__list > li {
+    font-size: 1.4rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .main-page {
     padding: 0 32px;
@@ -33,6 +58,12 @@
   .menu-header__item:hover {
     outline: unset;
   }
+  .menu-header__item {
+    font-size: 1.8rem;
+  }
+  .item__list > li {
+    font-size: 1.6rem;
+  }
   .close {
     right: 32px;
     top: 20px;
@@ -63,7 +94,7 @@
   .movie-info h3 {
     font-size: 3rem;
   }
-  .add-movie  {
+  .add-movie {
     opacity: 1;
   }
   footer {
@@ -106,7 +137,7 @@
     right: 24px;
     top: 16px;
   }
-  .movie-info h3  {
+  .movie-info h3 {
     font-size: 2rem;
   }
   #toast {

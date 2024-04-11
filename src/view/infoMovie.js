@@ -56,8 +56,8 @@ const infoMovie = (() => {
                 <p class="infomation-movie__content">${data.content}</p>
                 <span class="infomation-movie__country">Quốc gia: ${data.country[0].name}</span>
                 <span class="infomation-movie__time">Thời gian: ${data.time}</span>
+                <h4>Diễn viên</h4>
                 <ul class="infomation-movie__actor">
-                    <h4>Diễn viên</h4>
                     ${data.actor.map(name => `
                         <li>${name}</li>
                     `).join('')}
