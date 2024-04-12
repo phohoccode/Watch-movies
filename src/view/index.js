@@ -27,8 +27,8 @@ const root = (() => {
                 .then(data => {
                     setTimeout(() => {
                         this.renderSlider(data.items)
+                        this.handleEvent()
                     }, 1000)
-                    this.handleEvent()
                 })
                 .catch(err => {
                     console.log('Error', err)
@@ -38,8 +38,8 @@ const root = (() => {
                 .then(data => {
                     setTimeout(() => {
                         this.renderMovie(data.data, featureFilm, API_FEATUREFILM)
+                        this.handleEvent()
                     }, 1000)
-                    this.handleEvent()
                 })
                 .catch(err => {
                     console.log('Error', err)
@@ -49,8 +49,8 @@ const root = (() => {
                 .then(data => {
                     setTimeout(() => {
                         this.renderMovie(data.data, televisonSeris, API_TELEVISIONSERIES)
+                        this.handleEvent()
                     }, 1000)
-                    this.handleEvent()
                 })
                 .catch(err => {
                     console.log('Error', err)
@@ -60,8 +60,8 @@ const root = (() => {
                 .then(data => {
                     setTimeout(() => {
                         this.renderMovie(data.data, cartoon, API_CARTOON)
+                        this.handleEvent()
                     }, 1000)
-                    this.handleEvent()
                 })
                 .catch(err => {
                     console.log('Error', err)
@@ -71,8 +71,8 @@ const root = (() => {
                 .then(data => {
                     setTimeout(() => {
                         this.renderMovie(data.data, tvShows, API_TVSHOWS)
+                        this.handleEvent()
                     }, 1000)
-                    this.handleEvent()
                 })
                 .catch(err => {
                     console.log('Error', err)
