@@ -2,23 +2,8 @@ import storage from "../utils/localStorage.js"
 import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import handleDetailPages from "./handleDetailPages.js"
+import handleWatchNowSlide from "./handleWatchNowSlide.js"
 import { $ } from "../utils/base.js"
-
-const handleWatchNowSlide = (element) => {
-    const linkSlug = element.dataset.slug
-    if (!linkSlug) {
-        console.log('Error link slug')
-        return
-    }
-    fetchAPI(linkSlug)
-        .then(data => {  
-            setTitleAndStoreData(data)
-            window.location.href = './watchMovie-page.html'
-        })
-        .catch(err => {
-            console.log('Error', err)
-        })
-}
 
 const handleWatchMovie = () => {
     const content = $('.content')

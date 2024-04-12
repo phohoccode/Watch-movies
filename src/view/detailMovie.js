@@ -10,6 +10,7 @@ import componentRendering from "../utils/componentRendering.js"
 import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
 import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 import toastMessege from "../utils/toastMessage.js"
+import initLoader from "../utils/initLoader.js"
 
 const detailMovie = (() => {
     let page = 0
@@ -28,7 +29,9 @@ const detailMovie = (() => {
                         return
                     }
                     document.title = data.data.seoOnPage.titleHead
-                    this.renderAllMovie(data.data, allMovie)
+                    setTimeout(() => {
+                        this.renderAllMovie(data.data, allMovie)
+                    }, 1000)
                 })
         },
         renderAllMovie(data, element) {
@@ -82,11 +85,14 @@ const detailMovie = (() => {
             })
         },
         start() {
+            initLoader()
             renderHeader(header)
-            componentRendering('./src/components/footer.html', footer)
             this.fetchApi(page)
-            this.renderPaginations(totalPages)
-            this.setActivePageDefault()
+            componentRendering('./src/components/footer.html', footer)
+            setTimeout(() => {
+                this.renderPaginations(totalPages)
+                this.setActivePageDefault()
+            }, 3000)
             this.handleEvent()
         }
     }

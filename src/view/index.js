@@ -1,5 +1,6 @@
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
 import fetchAPI from "../utils/fectchAPI.js"
+import renderHeader from "../components/renderHeader.js"
 import movies from "../components/movies.js"
 import { $, content, header, footer } from "../utils/base.js"
 import handleHeader from "../utils/handleHeader.js"
@@ -8,7 +9,8 @@ import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
 import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
-import renderHeader from "../components/renderHeader.js"
+import handlePrevOrNextButton from "../utils/handlePrevOrNextButton.js"
+import initLoader from "../utils/initLoader.js"
 
 const root = (() => {
     let page = 1
@@ -23,7 +25,9 @@ const root = (() => {
             const API_ALLMOVIE = `https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`
             fetchAPI(API_ALLMOVIE)
                 .then(data => {
-                    this.renderSlider(data.items)
+                    setTimeout(() => {
+                        this.renderSlider(data.items)
+                    }, 1000)
                     this.handleEvent()
                 })
                 .catch(err => {
@@ -32,7 +36,9 @@ const root = (() => {
 
             fetchAPI(API_FEATUREFILM)
                 .then(data => {
-                    this.renderMovie(data.data, featureFilm, API_FEATUREFILM)
+                    setTimeout(() => {
+                        this.renderMovie(data.data, featureFilm, API_FEATUREFILM)
+                    }, 1000)
                     this.handleEvent()
                 })
                 .catch(err => {
@@ -41,7 +47,9 @@ const root = (() => {
 
             fetchAPI(API_TELEVISIONSERIES)
                 .then(data => {
-                    this.renderMovie(data.data, televisonSeris, API_TELEVISIONSERIES)
+                    setTimeout(() => {
+                        this.renderMovie(data.data, televisonSeris, API_TELEVISIONSERIES)
+                    }, 1000)
                     this.handleEvent()
                 })
                 .catch(err => {
@@ -50,7 +58,9 @@ const root = (() => {
 
             fetchAPI(API_CARTOON)
                 .then(data => {
-                    this.renderMovie(data.data, cartoon, API_CARTOON)
+                    setTimeout(() => {
+                        this.renderMovie(data.data, cartoon, API_CARTOON)
+                    }, 1000)
                     this.handleEvent()
                 })
                 .catch(err => {
@@ -59,7 +69,9 @@ const root = (() => {
 
             fetchAPI(API_TVSHOWS)
                 .then(data => {
-                    this.renderMovie(data.data, tvShows, API_TVSHOWS)
+                    setTimeout(() => {
+                        this.renderMovie(data.data, tvShows, API_TVSHOWS)
+                    }, 1000)
                     this.handleEvent()
                 })
                 .catch(err => {
@@ -70,12 +82,18 @@ const root = (() => {
             const htmls = data.map(slider => `
                     <div class="slide">
                         <figure>
-                            <img src="${slider.thumb_url.includes('https://img.phimapi.com') ? slider.thumb_url : 'https://img.phimapi.com/' + slider.thumb_url}" alt="">
+                            <img 
+                                src="${slider.thumb_url.includes('https://img.phimapi.com') ? 
+                                    slider.thumb_url : 
+                                    'https://img.phimapi.com/' + slider.thumb_url}" 
+                                alt=""
+                            >
                         </figure>
                         <div class="movie-info">
                             <h3>${slider.name}</h3>
                             <div class="movie-info__bottom">
-                                <button href="./watchMovie-page.html" class="watch-now" data-slug="https://phimapi.com/phim/${slider.slug}">
+                                <button href="./watchMovie-page.html" class="watch-now" 
+                                        data-slug="https://phimapi.com/phim/${slider.slug}">
                                     <i class="fa-solid fa-play"></i>
                                 Xem ngay
                                 </button>
@@ -108,36 +126,6 @@ const root = (() => {
                     </div>`
             element.innerHTML = htmls
         },
-        handlePrevNextEvent(prevButton, nextButton, indexMovie, currentPage, maxMovies, screenWidth) {
-            if (prevButton) {
-                prevButton.addEventListener('click', () => {
-                    const elementAnimate = prevButton.nextElementSibling
-                    const { widthElement, displayQuantity } = this.getNumberDisplayOnPage(elementAnimate, screenWidth)
-                    currentPage = displayQuantity + indexMovie
-                    if (currentPage > 0) {
-                        if (indexMovie > 0) {
-                            indexMovie--
-                        }
-                        elementAnimate.style.transform = `translate3d(-${indexMovie * widthElement}px, 0, 0)`
-                    }
-                })
-            }
-
-            if (nextButton) {
-                nextButton.addEventListener('click', () => {
-                    const elementAnimate = nextButton.previousElementSibling
-                    const { widthElement, displayQuantity } = this.getNumberDisplayOnPage(elementAnimate, screenWidth)
-                    currentPage = displayQuantity + indexMovie
-                    if (currentPage < maxMovies) {
-                        if (indexMovie < maxMovies) {
-                            indexMovie++
-                        }
-                        elementAnimate.style.transform = `translate3d(-${indexMovie * widthElement}px, 0, 0)`
-                    }
-                })
-            }
-        },
-
         handleEvent() {
             const screenWidth = content.clientWidth
             const maxMovies = 10
@@ -156,7 +144,7 @@ const root = (() => {
             handleWatchMovie()
             handleFeedback()
 
-            this.handlePrevNextEvent(
+            handlePrevOrNextButton(
                 $('.slider-container .prev'),
                 $('.slider-container .next'),
                 indexSlider,
@@ -165,7 +153,7 @@ const root = (() => {
                 screenWidth
             )
 
-            this.handlePrevNextEvent(
+            handlePrevOrNextButton(
                 $('.feature-film .movie-container .prev'),
                 $('.feature-film .movie-container .next'),
                 indexMovieFeatureFilm,
@@ -174,7 +162,7 @@ const root = (() => {
                 screenWidth
             )
 
-            this.handlePrevNextEvent(
+            handlePrevOrNextButton(
                 $('.television-seris .movie-container .prev'),
                 $('.television-seris .movie-container .next'),
                 indexMovieTelevisionSeri,
@@ -183,7 +171,7 @@ const root = (() => {
                 screenWidth
             )
 
-            this.handlePrevNextEvent(
+            handlePrevOrNextButton(
                 $('.cartoon .movie-container .prev'),
                 $('.cartoon .movie-container .next'),
                 indexMovieCartoon,
@@ -192,7 +180,7 @@ const root = (() => {
                 screenWidth
             )
 
-            this.handlePrevNextEvent(
+            handlePrevOrNextButton(
                 $('.tv-shows .movie-container .prev'),
                 $('.tv-shows .movie-container .next'),
                 indexMovieTvShows,
@@ -201,17 +189,10 @@ const root = (() => {
                 screenWidth
             )
         },
-        getNumberDisplayOnPage(elementAnimate, screenWidth) {
-            const element = elementAnimate.children[0]
-            const computedStyle = window.getComputedStyle(element)
-            const widthElement = parseFloat(computedStyle.getPropertyValue('width'))
-            const percentage = (widthElement / screenWidth) * 100
-            const displayQuantity = Math.round(100 / percentage)
-            return { widthElement, displayQuantity }
-        },
         start() {
-            this.fetchApi(page)
+            initLoader()
             renderHeader(header)
+            this.fetchApi(page)
             componentRendering('./src/components/footer.html', footer)
         }
     }

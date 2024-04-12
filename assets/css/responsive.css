@@ -1,10 +1,13 @@
-@media (max-width: 1440px) {
+@media (max-width: 1239px) {
+  :root {
+    --distance: 48px;
+  }
   .main-page {
-    padding: 0 48px;
+    padding: 0 var(--distance);
   }
   .main-page > header {
-    left: 48px;
-    right: 48px;
+    left: var(--distance);
+    right: var(--distance);
   }
   .search input {
     width: 300px;
@@ -21,27 +24,32 @@
   .item__list > li {
     font-size: 1.4rem;
   }
+  .loader {
+    left: calc(50% - var(--distance));
+  }
 }
-
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
+  .bars,
+  .close,
+  .item__list {
+    display: flex;
+  }
+  :root {
+    --distance: 32px;
+  }
   .main-page {
-    padding: 0 32px;
+    padding: 0 var(--distance);
   }
   .main-page > header {
     justify-content: space-between;
-    left: 32px;
-    right: 32px;
-    width: unset;
+    left: var(--distance);
+    right: var(--distance);
     padding: 16px 0;
-  }
-  .bars,
-  .close {
-    display: flex;
   }
   .menu-header.active {
     opacity: 1;
     transform: translateX(0);
-    padding: 20px 32px 20px 20px;
+    padding: 20px var(--distance) 20px 20px;
   }
   .menu-header {
     inset: 0;
@@ -52,7 +60,7 @@
     z-index: 9999;
     opacity: 0;
     overflow-y: auto;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     transform: translateX(-100%);
   }
   .menu-header__item:hover {
@@ -65,11 +73,10 @@
     font-size: 1.6rem;
   }
   .close {
-    right: 32px;
+    right: var(--distance);
     top: 20px;
   }
   .item__list {
-    display: flex;
     padding: 6px 12px;
     width: unset;
     opacity: 1;
@@ -78,14 +85,16 @@
     max-height: unset;
     box-shadow: unset;
   }
-  .menu-header__item:nth-child(6):after,
-  .menu-header__item:nth-child(5):after {
+  .menu-header__item:nth-child(5):after,
+  .menu-header__item:nth-child(6):after {
     display: none;
   }
   .search {
     flex: unset;
   }
-  .search input {
+  .footer-item,
+  .search input,
+  .send-mail {
     width: 100%;
   }
   .movie {
@@ -100,72 +109,82 @@
   footer {
     gap: 32px 0;
   }
-  .footer-item {
-    width: 100%;
-  }
-  .send-mail {
-    width: 100%;
-  }
   .episode {
     width: calc(12.5% - 11px);
   }
+  .loader {
+    left: calc(50% - var(--distance));
+  }
 }
-
 @media (max-width: 768px) {
+  #toast,
+  .close,
+  .main-page > header {
+    right: var(--distance);
+  }
+  :root {
+    --distance: 24px;
+  }
   .main-page {
-    padding: 0 24px;
+    padding: 0 var(--distance);
   }
   .movie {
     width: 33.3333%;
   }
   .main-page > header {
-    left: 24px;
-    right: 24px;
+    left: var(--distance);
     padding: 16px 0;
   }
   .movie-info {
-    left: 24px;
-    bottom: 24px;
+    left: var(--distance);
+    bottom: var(--distance);
   }
   .menu-header.active {
-    padding: 16px 24px 16px 16px;
+    padding: 16px var(--distance) 16px 16px;
   }
   .item__list > li {
     width: calc(50% - 6px);
   }
   .close {
-    right: 24px;
     top: 16px;
   }
   .movie-info h3 {
     font-size: 2rem;
   }
   #toast {
-    top: 24px;
-    right: 24px;
+    top: var(--distance);
   }
   .episode {
     font-size: 1.4rem;
     width: calc(16.66666% - 10px);
   }
+  .loader {
+    left: calc(50% - var(--distance));
+  }
 }
-
 @media (max-width: 480px) {
-  *::-webkit-scrollbar {
+  #toast,
+  .close,
+  .main-page > header {
+    right: var(--distance);
+  }
+  ::-webkit-scrollbar {
     width: 0;
     height: 6px;
   }
+  :root {
+    --distance: 16px;
+  }
   .main-page {
-    padding: 0 16px;
+    padding: 0 var(--distance);
   }
   .main-page > header {
-    left: 16px;
-    right: 16px;
+    left: var(--distance);
     width: unset;
     gap: 24px;
   }
   .menu-header.active {
-    padding: 8px 16px 8px 8px;
+    padding: 8px var(--distance) 8px 8px;
   }
   .search input {
     width: 84%;
@@ -173,8 +192,8 @@
   .movie {
     width: 50%;
   }
-  .slide figure,
-  .background-movie figure {
+  .background-movie figure,
+  .slide figure {
     height: 280px;
   }
   .movie figure {
@@ -190,11 +209,11 @@
   .info-bottom {
     flex-wrap: wrap;
   }
+  .toast__title,
   section header {
     font-size: 1.4rem;
   }
   .close {
-    right: 16px;
     top: 12px;
   }
   .view-iframe iframe {
@@ -208,15 +227,11 @@
     width: 100%;
   }
   #toast {
-    top: 16px;
-    right: 16px;
+    top: var(--distance);
   }
   .toast {
     width: 320px;
     padding: 8px;
-  }
-  .toast__title {
-    font-size: 1.4rem;
   }
   .toast__message {
     font-size: 1.3rem;
@@ -229,5 +244,8 @@
   }
   .reset-value {
     right: 40px;
+  }
+  .loader {
+    left: calc(50% - var(--distance)*2);
   }
 }

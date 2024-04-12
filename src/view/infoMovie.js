@@ -8,6 +8,7 @@ import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
 import renderHeader from "../components/renderHeader.js"
 import toastMessege from "../utils/toastMessage.js"
 import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
+import initLoader from "../utils/initLoader.js"
 
 const infoMovie = (() => {
     const backgroundMovie = $('.background-movie')
@@ -24,8 +25,10 @@ const infoMovie = (() => {
                         return
                     }
                     setTitleAndStoreData(data)
-                    this.renderBackgroundMovie(data.movie, backgroundMovie)
-                    this.renderInfoMovie(data.movie, infomationMovie)
+                    setTimeout(() => {
+                        this.renderBackgroundMovie(data.movie, backgroundMovie)
+                        this.renderInfoMovie(data.movie, infomationMovie)
+                    }, 1000)
                 })
                 .catch(err => {
                     console.log('Error', err)
@@ -56,8 +59,8 @@ const infoMovie = (() => {
                 <p class="infomation-movie__content">${data.content}</p>
                 <span class="infomation-movie__country">Quốc gia: ${data.country[0].name}</span>
                 <span class="infomation-movie__time">Thời gian: ${data.time}</span>
-                <h4>Diễn viên</h4>
                 <ul class="infomation-movie__actor">
+                    <h4>Diễn viên</h4>
                     ${data.actor.map(name => `
                         <li>${name}</li>
                     `).join('')}
@@ -72,8 +75,9 @@ const infoMovie = (() => {
             element.innerHTML = htmls
         },
         start() {
-            this.fetchApi()
             renderHeader(header)
+            initLoader()
+            this.fetchApi()
             componentRendering('./src/components/footer.html', footer)
             handleHeader()
             handleFeedback()
