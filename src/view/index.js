@@ -23,58 +23,37 @@ const root = (() => {
     return {
         fetchApi(currentPage) {
             const API_ALLMOVIE = `https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`
-            fetchAPI(API_ALLMOVIE)
-                .then(data => {
+            // Promise.all() nhận vào mảng chứa các lời hứa và trả về 1 responses
+            Promise.all([
+                fetchAPI(API_ALLMOVIE),
+                fetchAPI(API_FEATUREFILM),
+                fetchAPI(API_TELEVISIONSERIES),
+                fetchAPI(API_CARTOON),
+                fetchAPI(API_TVSHOWS)
+            ])
+                .then((responses) => {
+                    const responsesAreOk = responses.every(response =>
+                        response.status === true || response.status === 'success'
+                    )
+                    if (!responsesAreOk) {
+                        console.log('Response are not found!')
+                        return 
+                    }
+                    const [allMovieData,
+                           featureFilmData,
+                           televisionSeriesData,
+                           cartoonData,
+                           tvShowsData] = responses
                     setTimeout(() => {
-                        this.renderSlider(data.items)
+                        this.renderSlider(allMovieData.items)
+                        this.renderMovie(featureFilmData.data, featureFilm, API_FEATUREFILM)
+                        this.renderMovie(televisionSeriesData.data, televisonSeris, API_TELEVISIONSERIES)
+                        this.renderMovie(cartoonData.data, cartoon, API_CARTOON)
+                        this.renderMovie(tvShowsData.data, tvShows, API_TVSHOWS)
                         this.handleEvent()
                     }, 1000)
                 })
-                .catch(err => {
-                    console.log('Error', err)
-                })
-
-            fetchAPI(API_FEATUREFILM)
-                .then(data => {
-                    setTimeout(() => {
-                        this.renderMovie(data.data, featureFilm, API_FEATUREFILM)
-                        this.handleEvent()
-                    }, 1000)
-                })
-                .catch(err => {
-                    console.log('Error', err)
-                })
-
-            fetchAPI(API_TELEVISIONSERIES)
-                .then(data => {
-                    setTimeout(() => {
-                        this.renderMovie(data.data, televisonSeris, API_TELEVISIONSERIES)
-                        this.handleEvent()
-                    }, 1000)
-                })
-                .catch(err => {
-                    console.log('Error', err)
-                })
-
-            fetchAPI(API_CARTOON)
-                .then(data => {
-                    setTimeout(() => {
-                        this.renderMovie(data.data, cartoon, API_CARTOON)
-                        this.handleEvent()
-                    }, 1000)
-                })
-                .catch(err => {
-                    console.log('Error', err)
-                })
-
-            fetchAPI(API_TVSHOWS)
-                .then(data => {
-                    setTimeout(() => {
-                        this.renderMovie(data.data, tvShows, API_TVSHOWS)
-                        this.handleEvent()
-                    }, 1000)
-                })
-                .catch(err => {
+                .catch((err) => {
                     console.log('Error', err)
                 })
         },
@@ -83,9 +62,9 @@ const root = (() => {
                     <div class="slide">
                         <figure>
                             <img 
-                                src="${slider.thumb_url.includes('https://img.phimapi.com') ? 
-                                    slider.thumb_url : 
-                                    'https://img.phimapi.com/' + slider.thumb_url}" 
+                                src="${slider.thumb_url.includes('https://img.phimapi.com') ?
+                    slider.thumb_url :
+                    'https://img.phimapi.com/' + slider.thumb_url}" 
                                 alt=""
                             >
                         </figure>
@@ -197,4 +176,6 @@ const root = (() => {
         }
     }
 })()
+console.time('start')
 root.start()
+console.timeEnd('start')
