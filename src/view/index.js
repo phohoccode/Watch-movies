@@ -1,14 +1,12 @@
-import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
-import fetchAPI from "../utils/fectchAPI.js"
 import renderHeader from "../components/renderHeader.js"
 import movies from "../components/movies.js"
+import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
+import fetchAPI from "../utils/fectchAPI.js"
 import { $, content, header, footer } from "../utils/base.js"
 import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
-import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
-import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 import handlePrevOrNextButton from "../utils/handlePrevOrNextButton.js"
 import initLoader from "../utils/initLoader.js"
 
@@ -21,47 +19,38 @@ const root = (() => {
     const tvShows = $('.tv-shows')
 
     return {
-        fetchApi(currentPage) {
-            const API_ALLMOVIE = `https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`
-            // Promise.all() nhận vào mảng chứa các lời hứa và trả về 1 responses
-            Promise.all([
-                fetchAPI(API_ALLMOVIE),
-                fetchAPI(API_FEATUREFILM),
-                fetchAPI(API_TELEVISIONSERIES),
-                fetchAPI(API_CARTOON),
-                fetchAPI(API_TVSHOWS)
-            ])
-                .then((responses) => {
-                    const responsesAreOk = responses.every(response =>
-                        response.status === true || response.status === 'success'
-                    )
-                    if (!responsesAreOk) {
-                        console.log('Response are not found!')
-                        return 
-                    }
-                    const [allMovieData,
-                           featureFilmData,
-                           televisionSeriesData,
-                           cartoonData,
-                           tvShowsData] = responses
-                    setTimeout(() => {
-                        this.renderSlider(allMovieData.items)
-                        this.renderMovie(featureFilmData.data, featureFilm, API_FEATUREFILM)
-                        this.renderMovie(televisionSeriesData.data, televisonSeris, API_TELEVISIONSERIES)
-                        this.renderMovie(cartoonData.data, cartoon, API_CARTOON)
-                        this.renderMovie(tvShowsData.data, tvShows, API_TVSHOWS)
-                        this.handleEvent()
-                    }, 1000)
-                })
-                .catch((err) => {
-                    console.log('Error', err)
-                })
+        async fetchApi(currentPage) {
+            const API_ALLMOVIE = `https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`     
+            try {
+                const [allMovieData,
+                    featureFilmData,
+                    televisionSeriesData,
+                    cartoonData,
+                    tvShowsData] = await Promise.all([
+                        fetchAPI(API_ALLMOVIE),
+                        fetchAPI(API_FEATUREFILM),
+                        fetchAPI(API_TELEVISIONSERIES),
+                        fetchAPI(API_CARTOON),
+                        fetchAPI(API_TVSHOWS)
+                    ])
+                setTimeout(() => {
+                    this.renderSlider(allMovieData.items, sliderInner)
+                    this.renderMovie(featureFilmData.data, featureFilm, API_FEATUREFILM)
+                    this.renderMovie(televisionSeriesData.data, televisonSeris, API_TELEVISIONSERIES)
+                    this.renderMovie(cartoonData.data, cartoon, API_CARTOON)
+                    this.renderMovie(tvShowsData.data, tvShows, API_TVSHOWS)
+                    this.handleEvent()
+                }, 1000)
+            } catch(error) {
+                console.log(error)
+            }       
         },
-        renderSlider(data) {
+        renderSlider(data, element) {
             const htmls = data.map(slider => `
                     <div class="slide">
                         <figure>
                             <img 
+                                loading="lazy"
                                 src="${slider.thumb_url.includes('https://img.phimapi.com') ?
                     slider.thumb_url :
                     'https://img.phimapi.com/' + slider.thumb_url}" 
@@ -81,7 +70,7 @@ const root = (() => {
                         </div>
                     </div>
                 `).join('')
-            sliderInner.innerHTML = htmls
+            element.innerHTML = htmls
         },
         renderMovie(data, element, api) {
             const htmls = `
@@ -169,13 +158,11 @@ const root = (() => {
             )
         },
         start() {
-            initLoader()
             renderHeader(header)
+            initLoader(2000)
             this.fetchApi(page)
             componentRendering('./src/components/footer.html', footer)
         }
     }
 })()
-console.time('start')
 root.start()
-console.timeEnd('start')

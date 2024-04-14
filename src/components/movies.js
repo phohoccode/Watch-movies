@@ -1,4 +1,6 @@
 import storage from "../utils/localStorage.js"
+import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
+import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 
 const renderButton = (movie) => {
     const listOfMoviesToWatchLaterStorage = storage.get('listMoviesToWatchLater')
@@ -19,9 +21,13 @@ const movies = (data) => {
         <div class="movie" data-slug="https://phimapi.com/phim/${movie.slug}">
             <figure>
                 <a href="./infoMovie-page.html">
-                <img src="${movie.poster_url.includes('https://img.phimapi.com') ? 
+                    <img 
+                        loading="lazy" 
+                        src="${movie.poster_url.includes('https://img.phimapi.com') ? 
                             movie.poster_url : 
-                            'https://img.phimapi.com/' + movie.poster_url}" alt="">
+                            'https://img.phimapi.com/' + movie.poster_url}" 
+                        alt="${movie.name}"
+                    >
                     <div class="icon-play">
                         <i class="fa-duotone fa-play fa-bounce"></i>
                     </div>

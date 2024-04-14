@@ -5,8 +5,6 @@ import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import storage from "../utils/localStorage.js"
-import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
-import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 import renderHeader from "../components/renderHeader.js"
 import initLoader from "../utils/initLoader.js"
 
@@ -39,7 +37,7 @@ const moviesToWatchLater = (() => {
         },
         start() {
             renderHeader(header)
-            initLoader()
+            initLoader(2000)
             componentRendering('./src/components/footer.html', footer)
             setTimeout(() => {
                 this.renderMovieToWatchLater(listMoviesToWatchLater)

@@ -6,7 +6,6 @@ import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
 import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
 import renderHeader from "../components/renderHeader.js"
-import toastMessege from "../utils/toastMessage.js"
 import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
 import initLoader from "../utils/initLoader.js"
 
@@ -15,24 +14,24 @@ const infoMovie = (() => {
     const infomationMovie = $('.information-movie')
     
     return {
-        fetchApi() {
+        async fetchApi() {
             const API_MOVIE = storage.get('link-slug')
-            fetchAPI(API_MOVIE)
-                .then(data => {
-                    console.log(data)
-                    if (data.status === false || data.episodes[0].server_data.length === 0) {
-                        hanleWhenDowloadingMoviesFail()
-                        return
-                    }
-                    setTitleAndStoreData(data)
-                    setTimeout(() => {
-                        this.renderBackgroundMovie(data.movie, backgroundMovie)
-                        this.renderInfoMovie(data.movie, infomationMovie)
-                    }, 1000)
-                })
-                .catch(err => {
-                    console.log('Error', err)
-                })
+            try {
+                const movieData = await fetchAPI(API_MOVIE)
+                console.log(movieData)
+                if (movieData.episodes[0].server_data.length === 0) {
+                    hanleWhenDowloadingMoviesFail()
+                    return
+                }
+                setTitleAndStoreData(movieData)
+                setTimeout(() => {
+                    this.renderBackgroundMovie(movieData.movie, backgroundMovie)
+                    this.renderInfoMovie(movieData.movie, infomationMovie)
+                }, 1000)
+            } catch (error) {
+                console.log(error)
+                hanleWhenDowloadingMoviesFail()
+            }
         },
         renderBackgroundMovie(data, element) {
             const htmls = `
@@ -56,9 +55,21 @@ const infoMovie = (() => {
         },
         renderInfoMovie(data, element) {
             const htmls = `
-                <p class="infomation-movie__content">${data.content}</p>
-                <span class="infomation-movie__country">Quốc gia: ${data.country[0].name}</span>
-                <span class="infomation-movie__time">Thời gian: ${data.time}</span>
+                <p class="infomation-movie__content">
+                    Nội dung: <span>${data.content}</span>
+                </p>
+                <span class="infomation-movie__country">
+                    Quốc gia: <span>${data.country[0].name}</span> 
+                </span>
+                <span class="infomation-movie__time">
+                    Thời gian: <span>${data.time}</span> 
+                </span>
+                <ul class="infomation-movie__director">
+                    <h4>Đạo diễn</h4>
+                    ${data.director.map(name => `
+                        <li>${name}</li>
+                    `).join('')}
+                </ul>
                 <ul class="infomation-movie__actor">
                     <h4>Diễn viên</h4>
                     ${data.actor.map(name => `
@@ -76,7 +87,7 @@ const infoMovie = (() => {
         },
         start() {
             renderHeader(header)
-            initLoader()
+            initLoader(2000)
             this.fetchApi()
             componentRendering('./src/components/footer.html', footer)
             handleHeader()

@@ -13,16 +13,37 @@
     <link rel="stylesheet" href="./assets/css/toastMessage.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/icon/fontawesome.com/releases/v6.4.2/css/all.css">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0" nonce="TIeMOrHD"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0" nonce="aDeC8jMP"></script>
 </head>
 <body>
     <div class="main-page">
         <header></header>
         <div class="content">
             <div class="detail-movie"></div>
+            <div 
+                class="fb-share-button" 
+                data-href="https://developers.facebook.com/docs/plugins/" 
+                data-layout="button" 
+                data-size="large">
+                <a 
+                    target="_blank" 
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" 
+                    class="fb-xfbml-parse-ignore">
+                    Chia sẻ
+                </a>
+            </div>
+            <div 
+                data-colorscheme="light"
+                data-width="100%"
+                data-numposts="5"
+                class="fb-comments"
+                data-href="https://developers.facebook.com/docs/plugins/comments#configurator">
+            </div>
         </div>
         <footer></footer>
     </div>
-
+    <div id="fb-root"></div>
     <script defer type="module" src="./src/view/watchMovie.js"></script>
 </body>
 </html>

@@ -5,8 +5,6 @@ import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
-import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
-import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 import renderHeader from "../components/renderHeader.js"
 import toastMessege from "../utils/toastMessage.js"
 
@@ -18,19 +16,18 @@ const searchPage = (() => {
     let index = 1, limitNew = limitDefault * index
 
     return {
-        fetchApi(limitMovie) {
+        async fetchApi(limitMovie) {
             const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
-            fetchAPI(API_KEY)
-                .then(data => {
-                    if (data.data.items.length === 0) {
-                        this.handleError()
-                        return
-                    }
-                    this.handleSuccess(data)
-                })
-                .catch(err => {
-                    console.log('Error', err)
-                })
+            try {
+                const movieData = await fetchAPI(API_KEY)
+                if (movieData.data.items.length === 0) {
+                    this.handleError()
+                    return
+                }
+                this.handleSuccess(movieData)
+            } catch (error) {   
+                console.log(error)
+            }
         },
         handleError() {
             const err = document.createElement('header')

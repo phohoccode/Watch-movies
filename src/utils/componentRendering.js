@@ -1,15 +1,10 @@
 import { fectchTextHtml } from "../utils/fectchAPI.js";
-const componentRendering = (url, element) => {
-    fectchTextHtml(url)
-        .then(data => {
-            if (!data) {
-                console.log('Data not found!')
-                return
-            }
-            element.innerHTML = data
-        })
-        .catch(err => {
-            console.log('Error', err)
-        })
+const componentRendering = async (url, element) => {
+    try {
+        const data = await fectchTextHtml(url)
+        element.innerHTML = data
+    } catch (error) {
+        console.log(error)
+    }
 }
 export default componentRendering

@@ -1,6 +1,6 @@
-import { mainPage, content } from "./base.js"
+import { content } from "./base.js"
 
-const initLoader = () => {
+const initLoader = (time) => {
     const loader = document.createElement('div')
     loader.className = 'loader'
     content.appendChild(loader)
@@ -8,6 +8,6 @@ const initLoader = () => {
         if (content.contains(loader)) {
             content.removeChild(loader)
         }
-    }, 2000)
+    }, time)
 }
 export default initLoader

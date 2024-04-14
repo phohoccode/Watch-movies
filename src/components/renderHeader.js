@@ -4,8 +4,10 @@ import category from "./category.js"
 import country from "./country.js"
 
 const header = async (element) => {
-    const categoryData = await fetchAPI(API_CATEGORY)
-    const countryData = await fetchAPI(API_COUNTRY)
+    const [categoryData, countryData] = await Promise.all([
+        fetchAPI(API_CATEGORY),
+        fetchAPI(API_COUNTRY)
+    ])
 
     const htmls = `
         <div class="bars">

@@ -7,8 +7,6 @@ import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
-import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
-import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
 import toastMessege from "../utils/toastMessage.js"
 import initLoader from "../utils/initLoader.js"
 
@@ -19,20 +17,18 @@ const detailMovie = (() => {
     const totalPages = Math.round(storage.get('total-page') / 2)
 
     return {
-        fetchApi(currentPage) {
+        async fetchApi(currentPage) {
             const API_KEY = `${storage.get('link-api')}?page=${currentPage}&limit=20`
-            fetchAPI(API_KEY)
-                .then(data => {
-                    const titleHead = data.data.seoOnPage.titleHead
-                    if (!titleHead) {
-                        console.log('Title head not found!')
-                        return
-                    }
-                    document.title = data.data.seoOnPage.titleHead
-                    setTimeout(() => {
-                        this.renderAllMovie(data.data, allMovie)
-                    }, 1000)
-                })
+            try {
+                const movieData = await fetchAPI(API_KEY)
+                const titleHead = movieData.data.seoOnPage.titleHead
+                document.title = titleHead
+                setTimeout(() => {
+                    this.renderAllMovie(movieData.data, allMovie)
+                }, 1000)
+            } catch(error) {
+                console.log(error)
+            }
         },
         renderAllMovie(data, element) {
             const htmls = `
@@ -70,23 +66,32 @@ const detailMovie = (() => {
             const paginations = $('.paginations')
             paginations.addEventListener('click', (e) => {
                 const page = e.target.closest('.page')
-                const index = page.dataset.index
-                this.fetchApi(index)
-                document.body.scrollTop = 0
-                document.documentElement.scrollTop = 0
-                this.setActivePage(page)
-                setTimeout(() => {
-                    toastMessege({
-                        title: 'Chuyển trang thành công!',
-                        message: `Bạn đang ở trang thứ ${index}`,
-                        type: 'success'
-                    })
-                }, 1000)
+                if (page) {
+                    const index = page.dataset.index
+                    if (!index) {
+                        console.log('Index not found!')
+                        return
+                    }
+                    this.handleClickChangePage(page, index)
+                }
             })
         },
+        handleClickChangePage(page, index) {
+            this.fetchApi(index)
+            document.body.scrollTop = 0
+            document.documentElement.scrollTop = 0
+            this.setActivePage(page)
+            setTimeout(() => {
+                toastMessege({
+                    title: 'Chuyển trang thành công!',
+                    message: `Bạn đang ở trang thứ ${index}`,
+                    type: 'success'
+                })
+            }, 1000)
+        },
         start() {
-            initLoader()
             renderHeader(header)
+            initLoader(2000)
             this.fetchApi(page)
             componentRendering('./src/components/footer.html', footer)
             setTimeout(() => {
