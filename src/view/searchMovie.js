@@ -7,11 +7,13 @@ import componentRendering from "../utils/componentRendering.js"
 import handleWatchMovie from "../utils/handleWatchMovie.js"
 import renderHeader from "../components/renderHeader.js"
 import toastMessege from "../utils/toastMessage.js"
+import storage from "../utils/localStorage.js"
+import initLoader from "../utils/initLoader.js"
 
 const searchPage = (() => {
     const allMovie = $('.all-movieFound')
     const seeMoreButton = $('.see-more')
-    const valueSearch = JSON.parse(localStorage.getItem('value-search'))
+    const valueSearch = storage.get('value-search')
     const limitDefault = 18
     let index = 1, limitNew = limitDefault * index
 
@@ -20,6 +22,7 @@ const searchPage = (() => {
             const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
             try {
                 const movieData = await fetchAPI(API_KEY)
+                console.log(movieData)
                 if (movieData.data.items.length === 0) {
                     this.handleError()
                     return
@@ -73,6 +76,7 @@ const searchPage = (() => {
             })
         },
         start() {
+            initLoader(1000)
             renderHeader(header)
             this.fetchApi(limitDefault)
             componentRendering('./src/components/footer.html', footer)

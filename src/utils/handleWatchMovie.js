@@ -1,6 +1,4 @@
 import storage from "../utils/localStorage.js"
-import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
-import fetchAPI from "../utils/fectchAPI.js"
 import handleDetailPages from "./handleDetailPages.js"
 import handleWatchNowSlide from "./handleWatchNowSlide.js"
 import { $ } from "../utils/base.js"

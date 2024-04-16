@@ -26,6 +26,7 @@ const detailMovie = (() => {
                 setTimeout(() => {
                     this.renderAllMovie(movieData.data, allMovie)
                 }, 1000)
+                history.pushState(null, '', `/Watch-movies/detailMovie-page.html?${movieData.data.breadCrumb[0].slug}`);
             } catch(error) {
                 console.log(error)
             }
@@ -87,7 +88,7 @@ const detailMovie = (() => {
                     message: `Bạn đang ở trang thứ ${index}`,
                     type: 'success'
                 })
-            }, 1000)
+            }, 2000)
         },
         start() {
             renderHeader(header)

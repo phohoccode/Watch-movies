@@ -28,6 +28,7 @@ const infoMovie = (() => {
                     this.renderBackgroundMovie(movieData.movie, backgroundMovie)
                     this.renderInfoMovie(movieData.movie, infomationMovie)
                 }, 1000)
+                history.pushState(null, '', `/Watch-movies/infoMovie-page.html?/${movieData.movie.slug}`)
             } catch (error) {
                 console.log(error)
                 hanleWhenDowloadingMoviesFail()

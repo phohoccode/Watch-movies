@@ -1,5 +1,6 @@
 import renderHeader from "../components/renderHeader.js"
 import movies from "../components/movies.js"
+import slides from "../components/slider.js"
 import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import { $, content, header, footer } from "../utils/base.js"
@@ -12,7 +13,7 @@ import initLoader from "../utils/initLoader.js"
 
 const root = (() => {
     let page = 1
-    const sliderInner = $('.slider-inner')
+    const sliderContainer = $('.slider-container')
     const featureFilm = $('.feature-film')
     const televisonSeris = $('.television-seris ')
     const cartoon = $('.cartoon')
@@ -20,7 +21,7 @@ const root = (() => {
 
     return {
         async fetchApi(currentPage) {
-            const API_ALLMOVIE = `https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`     
+            const API_ALLMOVIE = `https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`
             try {
                 const [allMovieData,
                     featureFilmData,
@@ -34,42 +35,29 @@ const root = (() => {
                         fetchAPI(API_TVSHOWS)
                     ])
                 setTimeout(() => {
-                    this.renderSlider(allMovieData.items, sliderInner)
+                    this.renderSlider(allMovieData.items, sliderContainer)
                     this.renderMovie(featureFilmData.data, featureFilm, API_FEATUREFILM)
                     this.renderMovie(televisionSeriesData.data, televisonSeris, API_TELEVISIONSERIES)
                     this.renderMovie(cartoonData.data, cartoon, API_CARTOON)
                     this.renderMovie(tvShowsData.data, tvShows, API_TVSHOWS)
                     this.handleEvent()
                 }, 1000)
-            } catch(error) {
+            } catch (error) {
                 console.log(error)
-            }       
+            }
         },
         renderSlider(data, element) {
-            const htmls = data.map(slider => `
-                    <div class="slide">
-                        <figure>
-                            <img 
-                                loading="lazy"
-                                src="${slider.thumb_url.includes('https://img.phimapi.com') ?
-                    slider.thumb_url :
-                    'https://img.phimapi.com/' + slider.thumb_url}" 
-                                alt=""
-                            >
-                        </figure>
-                        <div class="movie-info">
-                            <h3>${slider.name}</h3>
-                            <div class="movie-info__bottom">
-                                <button href="./watchMovie-page.html" class="watch-now" 
-                                        data-slug="https://phimapi.com/phim/${slider.slug}">
-                                    <i class="fa-solid fa-play"></i>
-                                Xem ngay
-                                </button>
-                                <span class="year">${slider.year}</span>
-                            </div>
-                        </div>
-                    </div>
-                `).join('')
+            const htmls = `
+                <button class="prev">
+                    <i class="fa-light fa-angle-left"></i>
+                </button>
+                <div class="slider-inner">
+                    ${slides(data)}
+                </div>
+                <button class="next">
+                    <i class="fa-light fa-angle-right"></i>
+                </button>
+            `
             element.innerHTML = htmls
         },
         renderMovie(data, element, api) {
@@ -162,6 +150,7 @@ const root = (() => {
             initLoader(2000)
             this.fetchApi(page)
             componentRendering('./src/components/footer.html', footer)
+            history.pushState(null, '', `/Watch-movies/index.html?Trang-chủ`);
         }
     }
 })()
