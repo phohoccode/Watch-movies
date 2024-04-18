@@ -79,8 +79,10 @@ const detailMovie = (() => {
         },
         handleClickChangePage(page, index) {
             this.fetchApi(index)
-            document.body.scrollTop = 0
-            document.documentElement.scrollTop = 0
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
             this.setActivePage(page)
             setTimeout(() => {
                 toastMessege({

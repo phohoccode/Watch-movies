@@ -10,6 +10,7 @@ import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import handlePrevOrNextButton from "../utils/handlePrevOrNextButton.js"
 import initLoader from "../utils/initLoader.js"
+import toastMessege from "../utils/toastMessage.js"
 
 const root = (() => {
     let page = 1
@@ -150,7 +151,15 @@ const root = (() => {
             initLoader(2000)
             this.fetchApi(page)
             componentRendering('./src/components/footer.html', footer)
-            history.pushState(null, '', `/Watch-movies/index.html?Trang-chủ`);
+            history.pushState(null, '', `/Watch-movies/index.html?Trang-chủ`)
+            setTimeout(() => {
+                toastMessege({
+                    title: 'Chào mừng đến với PHOFLIX!',
+                    message: 'Chúc bạn có trải nghiệm xem phim vui vẻ ^^',
+                    type: 'welcome',
+                    duration: 3000
+                })
+            }, 2000)
         }
     }
 })()

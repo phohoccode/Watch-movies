@@ -15,7 +15,11 @@ const moviesToWatchLater = (() => {
             let listOfMoviesToWatch = storage.get('listMoviesToWatchLater')
             const movie = `
                 <header>
-                    <div class="title-name">Danh sách tất cả phim đã lưu</div>
+                    <h3 class="title-name">
+                        ${listOfMoviesToWatch.length !== 0 ?
+                            'Danh sách tất cả phim đã lưu' :
+                            'Danh sách phim đang trống!'}
+                    </h3>
                 </header>
                 <div class="movies">
                     ${movies(listOfMoviesToWatch)}
