@@ -2,7 +2,7 @@ const toastMessege = ({
     title = '',
     message = '',
     type = '',
-    duration = 2000,
+    duration = 2000
 }) => {
     const toastParent = document.getElementById('toast')
     if (!toastParent) {

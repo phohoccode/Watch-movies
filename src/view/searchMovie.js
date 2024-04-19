@@ -9,6 +9,7 @@ import renderHeader from "../components/renderHeader.js"
 import toastMessege from "../utils/toastMessage.js"
 import storage from "../utils/localStorage.js"
 import initLoader from "../utils/initLoader.js"
+import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
 
 const searchPage = (() => {
     const allMovie = $('.all-movieFound')
@@ -22,21 +23,21 @@ const searchPage = (() => {
             const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
             try {
                 const movieData = await fetchAPI(API_KEY)
-                console.log(movieData)
                 if (movieData.data.items.length === 0) {
-                    this.handleError()
+                    this.handleNoResults()
                     return
                 }
                 this.handleSuccess(movieData)
-            } catch (error) {   
+            } catch (error) {
+                hanleWhenDowloadingMoviesFail()
                 console.log(error)
             }
         },
-        handleError() {
-            const err = document.createElement('header')
-            err.classList.add('title-name')
-            err.innerHTML = `<div class="title-name">Không tìm thấy kết quả cho từ khóa: ${valueSearch}</div>`
-            allMovie.appendChild(err)
+        handleNoResults() {
+            const header = document.createElement('header')
+            header.classList.add('title-name')
+            header.innerHTML = `<div class="title-name">Không tìm thấy kết quả cho từ khóa: ${valueSearch}</div>`
+            allMovie.appendChild(header)
         },
         handleSuccess(data) {
             document.title = data.data.titlePage

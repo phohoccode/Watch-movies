@@ -15,7 +15,8 @@ const handleRemoveMovieToWatchLater = (element) => {
     toastMessage({
         title: 'Đã xóa phim thành công!',
         message: `Xem ngay <a href="./listMoviesToWatchLater.html">Phim đã lưu</a>`,
-        type: 'success'
+        type: 'success',
+        duration: 3000
     })
 }
 export default handleRemoveMovieToWatchLater

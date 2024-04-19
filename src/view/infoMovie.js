@@ -18,7 +18,6 @@ const infoMovie = (() => {
             const API_MOVIE = storage.get('link-slug')
             try {
                 const movieData = await fetchAPI(API_MOVIE)
-                console.log(movieData)
                 if (movieData.episodes[0].server_data.length === 0) {
                     hanleWhenDowloadingMoviesFail()
                     return

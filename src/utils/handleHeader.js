@@ -1,6 +1,7 @@
 import {$, header } from "../utils/base.js"
 import storage from "./localStorage.js"
 import handleDetailPages from "./handleDetailPages.js"
+import handleEscapeHTML from "./handleEscapeHTML.js"
 
 const handleSearch = (inputSearchValue) => {
     if (inputSearchValue !== '') {
@@ -19,7 +20,7 @@ const handleHeader = () => {
         const menuHeader = $('.menu-header')
 
         if (searchButton) {
-            const inputSearchValue = $('.search input').value
+            const inputSearchValue = handleEscapeHTML($('.search input').value)
             handleSearch(inputSearchValue)
         }
         if(resetValue) {

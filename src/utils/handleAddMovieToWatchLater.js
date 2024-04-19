@@ -18,7 +18,7 @@ const handleAddMovieToWatchLater = async (element) => {
             newWatchLaterMoviesList.push(data.movie)
             storage.set('listMoviesToWatchLater', newWatchLaterMoviesList)
             toastMessege({
-                title: 'Đã  lưu phim thành công!',
+                title: 'Đã lưu phim thành công!',
                 message: `Xem ngay <a href="./listMoviesToWatchLater.html">Phim đã lưu</a>`,
                 type: 'success',
                 duration: 3000,

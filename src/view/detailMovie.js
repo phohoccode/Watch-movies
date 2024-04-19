@@ -9,6 +9,7 @@ import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import toastMessege from "../utils/toastMessage.js"
 import initLoader from "../utils/initLoader.js"
+import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
 
 const detailMovie = (() => {
     let page = 0
@@ -29,6 +30,7 @@ const detailMovie = (() => {
                 history.pushState(null, '', `/Watch-movies/detailMovie-page.html?${movieData.data.breadCrumb[0].slug}`);
             } catch(error) {
                 console.log(error)
+                hanleWhenDowloadingMoviesFail()
             }
         },
         renderAllMovie(data, element) {
