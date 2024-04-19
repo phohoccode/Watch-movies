@@ -10,6 +10,7 @@ const handleWatchMovie = () => {
         const movie = e.target.closest('.movie')
         const wacthAll = e.target.closest('.watch-all')
         if (watchNow) {
+            e.preventDefault()
             handleWatchNowSlide(watchNow)
         }
         if (movie) {

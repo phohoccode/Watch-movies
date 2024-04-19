@@ -152,6 +152,7 @@ img {
   background-color: #ff006e;
   font-size: 1.6rem;
   transition: 0.3s;
+  cursor: pointer;
 }
 .watch-now:hover {
   background-color: rgba(255, 0, 110, 0.8);
