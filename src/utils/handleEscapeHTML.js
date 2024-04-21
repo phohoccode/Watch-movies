@@ -1,4 +1,9 @@
 const handleEscapeHTML = html => {
-    return html.replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    if (html.includes('<') || html.includes('>')) {
+        html = html.replace(/[<>]/g, '');
+        return html;
+    }
+    return html
 }
-export default handleEscapeHTML
+export default handleEscapeHTML;
+

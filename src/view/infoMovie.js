@@ -4,7 +4,7 @@ import storage from "../utils/localStorage.js"
 import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
-import setTitleAndStoreData from "../utils/setTitleAndStoreData.js"
+import handleSetTitleAndStoreData from "../utils/handleSetTitleAndStoreData.js"
 import renderHeader from "../components/renderHeader.js"
 import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
 import initLoader from "../utils/initLoader.js"
@@ -12,7 +12,7 @@ import initLoader from "../utils/initLoader.js"
 const infoMovie = (() => {
     const backgroundMovie = $('.background-movie')
     const infomationMovie = $('.information-movie')
-    
+
     return {
         async fetchApi() {
             const API_MOVIE = storage.get('link-slug')
@@ -22,7 +22,7 @@ const infoMovie = (() => {
                     hanleWhenDowloadingMoviesFail()
                     return
                 }
-                setTitleAndStoreData(movieData)
+                handleSetTitleAndStoreData(movieData)
                 setTimeout(() => {
                     this.renderBackgroundMovie(movieData.movie, backgroundMovie)
                     this.renderInfoMovie(movieData.movie, infomationMovie)
@@ -89,8 +89,8 @@ const infoMovie = (() => {
             renderHeader(header)
             initLoader(2000)
             this.fetchApi()
-            componentRendering('./src/components/footer.html', footer)
             handleHeader()
+            componentRendering('./src/components/footer.html', footer)
             handleFeedback()
         }
     }

@@ -1,4 +1,4 @@
-import {$, header } from "../utils/base.js"
+import { $, header } from "../utils/base.js"
 import storage from "./localStorage.js"
 import handleDetailPages from "./handleDetailPages.js"
 import handleEscapeHTML from "./handleEscapeHTML.js"
@@ -12,19 +12,18 @@ const handleSearch = (inputSearchValue) => {
 
 const handleHeader = () => {
     header.addEventListener('click', (e) => {
+        const menuHeader = $('.menu-header')
+        const inputSearch = $('.search input')
         const searchButton = e.target.closest('.search-btn')
         const changePage = e.target.closest('.change-page')
         const barsButton = e.target.closest('.bars')
-        const closeButton = e.target.closest('.close')
         const resetValue = e.target.closest('.reset-value')
-        const menuHeader = $('.menu-header')
+        const closeButton = e.target.closest('.close')
 
         if (searchButton) {
-            const inputSearchValue = handleEscapeHTML($('.search input').value)
-            handleSearch(inputSearchValue)
+            handleSearch(handleEscapeHTML(inputSearch.value))
         }
-        if(resetValue) {
-            const inputSearch = $('.search input')
+        if (resetValue) {
             inputSearch.value = ''
         }
         if (changePage) {

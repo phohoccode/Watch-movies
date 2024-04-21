@@ -1,5 +1,5 @@
 import fetchAPI from "./fectchAPI.js"
-import setTitleAndStoreData from "./setTitleAndStoreData.js"
+import handleSetTitleAndStoreData from "./handleSetTitleAndStoreData.js"
 
 const handleWatchNowSlide = async (element) => {
     const linkSlug = element.dataset.slug
@@ -9,7 +9,7 @@ const handleWatchNowSlide = async (element) => {
     }
     try {
         const data = await fetchAPI(linkSlug)
-        setTitleAndStoreData(data)
+        handleSetTitleAndStoreData(data)
         window.location.href = './watchMovie-page.html'
     } catch (error) {
         console.log(error)

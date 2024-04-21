@@ -1,6 +1,6 @@
-import storage from "../utils/localStorage.js"
+import storage from "./localStorage.js"
 
-const setTitleAndStoreData = (data) => {
+const handleSetTitleAndStoreData = (data) => {
     const movieName = data.movie.name
     const serverData = data.episodes[0].server_data
     if (!movieName && !serverData) {
@@ -13,4 +13,4 @@ const setTitleAndStoreData = (data) => {
     storage.set('movie-name', movieName)
     storage.set('link_embed', link_embed)
 }
-export default setTitleAndStoreData
+export default handleSetTitleAndStoreData
