@@ -1,11 +1,9 @@
 import { $, $$, header, footer } from "../utils/base.js"
-import renderHeader from "../components/renderHeader.js"
-import movies from "../components/movies.js"
+import Header from "../components/Header/Header.js"
+import Movies from "../components/Content/Movies.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import storage from "../utils/localStorage.js"
-import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
-import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import toastMessege from "../utils/toastMessage.js"
 import initLoader from "../utils/initLoader.js"
@@ -40,7 +38,7 @@ const detailMovie = (() => {
                     <span class="current-page">${data.breadCrumb[1].name}</span>
                 </header>
                 <div class="movies">
-                    ${movies(data.items)}
+                    ${Movies(data.items)}
                 </div>
             `
             element.innerHTML = htmls
@@ -62,8 +60,6 @@ const detailMovie = (() => {
             $$('.page')[0].classList.add('active')
         },
         handleEvent() {
-            handleHeader()
-            handleWatchMovie()
             handleFeedback()
 
             const paginations = $('.paginations')
@@ -95,7 +91,7 @@ const detailMovie = (() => {
             }, 2000)
         },
         start() {
-            renderHeader(header)
+            Header(header)
             initLoader(2000)
             this.fetchApi(page)
             componentRendering('./src/components/footer.html', footer)

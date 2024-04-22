@@ -1,4 +1,6 @@
-const slides = (data) => {
+import { handleWatchNow } from "./handleContent.js"
+
+const Slides = (data) => {
     return data.map(slide => `
     <div class="slide">
         <figure>
@@ -13,9 +15,13 @@ const slides = (data) => {
         <div class="movie-info">
             <h3>${slide.name}</h3>
             <div class="movie-info__bottom">
-                <a href="./watchMovie-page.html" class="watch-now" 
-                    data-slug="https://phimapi.com/phim/${slide.slug}">
-                    <i class="fa-solid fa-play"></i>
+                <a  
+                    onclick="handleWatchNow(event, this)"
+                    class="watch-now" 
+                    href="./watchMovie-page.html" 
+                    data-slug="https://phimapi.com/phim/${slide.slug}"
+                >
+                        <i class="fa-solid fa-play"></i>
                     Xem ngay
                 </a>
                 <span class="year">${slide.year}</span>
@@ -24,4 +30,4 @@ const slides = (data) => {
     </div>
     `).join('');
 }
-export default slides
+export default Slides

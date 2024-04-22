@@ -1,11 +1,9 @@
 import fetchAPI from "../utils/fectchAPI.js"
-import movies from "../components/movies.js"
+import Movies from "../components/Content/Movies.js"
 import { $, header, footer } from "../utils/base.js"
-import handleHeader from "../utils/handleHeader.js"
+import Header from "../components/Header/Header.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
-import handleWatchMovie from "../utils/handleWatchMovie.js"
-import renderHeader from "../components/renderHeader.js"
 import toastMessege from "../utils/toastMessage.js"
 import storage from "../utils/localStorage.js"
 import initLoader from "../utils/initLoader.js"
@@ -52,14 +50,12 @@ const searchPage = (() => {
                     <div class="title-name">Kết quả tìm kiếm cho từ khóa: ${valueSearch}</div>
                 </header>
                 <div class="movies">
-                    ${movies(data.items)}
+                    ${Movies(data.items)}
                 </div>
             `
             element.innerHTML = htmls
         },
         handleEvent() {
-            handleHeader()
-            handleWatchMovie()
             handleFeedback()
             seeMoreButton.addEventListener('click', () => {
                 const moviesDisplayed = document.querySelectorAll('.movie').length
@@ -77,8 +73,8 @@ const searchPage = (() => {
             })
         },
         start() {
+            Header(header)
             initLoader(1000)
-            renderHeader(header)
             this.fetchApi(limitDefault)
             componentRendering('./src/components/footer.html', footer)
             this.handleEvent()

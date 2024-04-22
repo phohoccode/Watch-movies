@@ -1,9 +1,8 @@
 import storage from "../utils/localStorage.js"
 import {$,$$, header, footer } from "../utils/base.js"
-import handleHeader from "../utils/handleHeader.js"
+import Header from "../components/Header/Header.js"
 import handleFeedback from "../utils/handleFeedback.js"
 import componentRendering from "../utils/componentRendering.js"
-import renderHeader from "../components/renderHeader.js"
 import toastMessege from "../utils/toastMessage.js"
 
 const wacthMovie = (() => {
@@ -74,13 +73,12 @@ const wacthMovie = (() => {
             document.title = `Bạn đang xem ${titlePage}`
         },
         start() {
-            renderHeader(header)
+            Header(header)
             componentRendering('./src/components/footer.html', footer)
             this.setDocumentTitle()
             this.renderMovie(link_embed)
             this.setActiveMovieDefault()
             this.handleClickChangeEpisode()
-            handleHeader()
             handleFeedback()
         }
     }

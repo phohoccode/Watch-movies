@@ -1,12 +1,18 @@
-import renderHeader from "../components/renderHeader.js"
-import movies from "../components/movies.js"
-import slides from "../components/slider.js"
-import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
+import { API_FEATUREFILM,
+         API_CARTOON,
+         API_TVSHOWS,
+        API_TELEVISIONSERIES 
+} from "../utils/fectchAPI.js"
+import { $,
+         content,
+         header,
+         footer
+} from "../utils/base.js"
+import Header from "../components/Header/Header.js"
+import Movies from "../components/Content/Movies.js"
+import Slides from "../components/Content/Slides.js"
 import fetchAPI from "../utils/fectchAPI.js"
-import { $, content, header, footer } from "../utils/base.js"
-import handleHeader from "../utils/handleHeader.js"
 import handleFeedback from "../utils/handleFeedback.js"
-import handleWatchMovie from "../utils/handleWatchMovie.js"
 import componentRendering from "../utils/componentRendering.js"
 import handlePrevOrNextButton from "../utils/handlePrevOrNextButton.js"
 import initLoader from "../utils/initLoader.js"
@@ -53,7 +59,7 @@ const root = (() => {
                     <i class="fa-light fa-angle-left"></i>
                 </button>
                 <div class="slider-inner">
-                    ${slides(data)}
+                    ${Slides(data)}
                 </div>
                 <button class="next">
                     <i class="fa-light fa-angle-right"></i>
@@ -65,7 +71,11 @@ const root = (() => {
             const htmls = `
                     <header>
                         <h3 class="title-name">${data.titlePage}</h3>
-                        <a class="watch-all" data-api="${api}">
+                        <a 
+                            onclick="handleWatchAll(this)"
+                            class="watch-all" 
+                            data-api="${api}"
+                        >
                             Xem tất cả
                             <i class="fa-light fa-chevron-right"></i>
                         </a>
@@ -75,7 +85,7 @@ const root = (() => {
                             <i class="fa-light fa-angle-left"></i>
                         </button>
                         <div class="movie-inner">
-                            ${movies(data.items)}
+                            ${Movies(data.items)}
                         </div>
                         <button class="next">
                             <i class="fa-light fa-angle-right"></i>
@@ -97,8 +107,6 @@ const root = (() => {
                 currentPageCartoon,
                 currentPageTvShows
 
-            handleHeader()
-            handleWatchMovie()
             handleFeedback()
 
             handlePrevOrNextButton(
@@ -147,7 +155,7 @@ const root = (() => {
             )
         },
         start() {
-            renderHeader(header)
+            Header(header)
             initLoader(2000)
             this.fetchApi(page)
             componentRendering('./src/components/footer.html', footer)

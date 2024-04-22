@@ -1,5 +1,5 @@
-import storage from "../utils/localStorage.js"
-import toastMessage from "../utils/toastMessage.js"
+import storage from "../../utils/localStorage.js"
+import toastMessage from "../../utils/toastMessage.js"
 
 const handleRemoveMovieToWatchLater = (element) => {
     const listOfMoviesToWatchLaterStorage = storage.get('listMoviesToWatchLater')
@@ -10,7 +10,8 @@ const handleRemoveMovieToWatchLater = (element) => {
         return
     }
     addMovie.classList.remove('active')
-    const listOfMoviesToWatchLaterNew = listOfMoviesToWatchLaterStorage.filter(item => item.slug !== slug)
+    const listOfMoviesToWatchLaterNew = 
+                listOfMoviesToWatchLaterStorage.filter(item => item.slug !== slug)
     storage.set('listMoviesToWatchLater', listOfMoviesToWatchLaterNew)
     toastMessage({
         title: 'Đã xóa phim thành công!',
@@ -19,5 +20,5 @@ const handleRemoveMovieToWatchLater = (element) => {
         duration: 3000
     })
 }
-export default handleRemoveMovieToWatchLater
 window.handleRemoveMovieToWatchLater = handleRemoveMovieToWatchLater
+export default handleRemoveMovieToWatchLater

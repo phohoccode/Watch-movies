@@ -1,7 +1,7 @@
-import storage from "../utils/localStorage.js"
-import handleAddMovieToWatchLater from "../utils/handleAddMovieToWatchLater.js"
-import handleRemoveMovieToWatchLater from "../utils/handleRemoveMovieToWatchLater.js"
-
+import storage from "../../utils/localStorage.js"
+import handleAddMovieToWatchLater from "./handleAddMovieToWatchLater.js"
+import handleRemoveMovieToWatchLater from "./handleRemoveMovieToWatchLater.js"
+import { handleMovie } from "./handleContent.js"
 const renderButton = (movie) => {
     const listOfMoviesToWatchLaterStorage = storage.get('listMoviesToWatchLater')
     const isMovieSaved = listOfMoviesToWatchLaterStorage.find(item => item.slug === movie.slug)
@@ -16,9 +16,13 @@ const renderButton = (movie) => {
     `
 }
 
-const movies = (data) => {
+const Movies = (data) => {
     return data.map(movie => `
-        <div class="movie" data-slug="https://phimapi.com/phim/${movie.slug}">
+        <div
+            onclick="handleMovie(this)" 
+            class="movie" 
+            data-slug="https://phimapi.com/phim/${movie.slug}"
+        >
             <figure>
                 <a href="./infoMovie-page.html">
                     <img 
@@ -39,4 +43,4 @@ const movies = (data) => {
         </div>
     `).join('')
 }
-export default movies
+export default Movies

@@ -1,6 +1,6 @@
-import storage from "../utils/localStorage.js"
-import toastMessege from "../utils/toastMessage.js"
-import fetchAPI from "../utils/fectchAPI.js"
+import storage from "../../utils/localStorage.js"
+import toastMessege from "../../utils/toastMessage.js"
+import fetchAPI from "../../utils/fectchAPI.js"
 
 const handleAddMovieToWatchLater = async (element) => {
     const newWatchLaterMoviesList = storage.get('listMoviesToWatchLater')
@@ -28,5 +28,5 @@ const handleAddMovieToWatchLater = async (element) => {
         console.log(error)
     }
 }
-export default handleAddMovieToWatchLater
 window.handleAddMovieToWatchLater = handleAddMovieToWatchLater
+export default handleAddMovieToWatchLater
