@@ -6,9 +6,9 @@ const Category = (data) => {
             <a
                 onclick="handleChangePage(this)"
                 class="change-page" 
-                data-api="https://phimapi.com/v1/api/the-loai/${category.slug}"
+                data-api="https://phimapi.com/v1/api/the-loai/${category?.slug}"
             >
-                ${category.name}
+                ${category?.name}
             </a>
         </li>
     `).join('')

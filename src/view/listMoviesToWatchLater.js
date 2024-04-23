@@ -1,12 +1,13 @@
 import Movies from "../components/Content/Movies.js"
 import Header from "../components/Header/Header.js"
 import Footer from "../components/Footer/Footer.js"
-import { header, footer } from "../utils/base.js"
+import {$, header, footer } from "../utils/base.js"
 import storage from "../utils/localStorage.js"
 import initLoader from "../utils/initLoader.js"
 
 const moviesToWatchLater = (() => {
-    const listMoviesToWatchLater = document.querySelector('.listMoviesToWatchLater')
+    const listMoviesToWatchLater = $('.listMoviesToWatchLater')
+    
     return {
         renderMovieToWatchLater(element) {
             let listOfMoviesToWatch = storage.get('listMoviesToWatchLater')

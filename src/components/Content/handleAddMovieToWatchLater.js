@@ -3,15 +3,10 @@ import toastMessege from "../../utils/toastMessage.js"
 import fetchAPI from "../../utils/fectchAPI.js"
 
 const handleAddMovieToWatchLater = async (element) => {
-    const newWatchLaterMoviesList = storage.get('listMoviesToWatchLater')
-    const addMovie = element.parentNode
-    const linkSlug = `https://phimapi.com/phim/${addMovie.dataset.slug}`
-
-    if (!linkSlug && !addMovie) {
-        console.log('Link slug or addMovie not found!')
-        return
-    }
     try {
+        const newWatchLaterMoviesList = storage.get('listMoviesToWatchLater')
+        const addMovie = element.parentNode
+        const linkSlug = `https://phimapi.com/phim/${addMovie.dataset.slug}`
         addMovie.classList.add('active')
         const data = await fetchAPI(linkSlug)
         if (!newWatchLaterMoviesList.find(item => item.slug === data.movie.slug)) {
@@ -25,7 +20,7 @@ const handleAddMovieToWatchLater = async (element) => {
             })
         }
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
 window.handleAddMovieToWatchLater = handleAddMovieToWatchLater

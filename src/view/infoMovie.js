@@ -13,10 +13,10 @@ const infoMovie = (() => {
 
     return {
         async fetchApi() {
-            const API_MOVIE = storage.get('link-slug')
             try {
+                const API_MOVIE = storage.get('link-slug')
                 const movieData = await fetchAPI(API_MOVIE)
-                if (movieData.episodes[0].server_data.length === 0) {
+                if (movieData?.episodes[0]?.server_data.length === 0) {
                     hanleWhenDowloadingMoviesFail()
                     return
                 }
@@ -34,18 +34,18 @@ const infoMovie = (() => {
         renderBackgroundMovie(data, element) {
             const htmls = `
                 <figure>
-                    <img src="${data.thumb_url}" alt="">
+                    <img src="${data?.thumb_url}" alt="">
                 </figure>
                 <div class="movie-info">
-                    <h3>${data.name}</h3>
+                    <h3>${data?.name}</h3>
                     <div class="movie-info__bottom">
                         <a class="watch-now" href="./watchMovie-page.html">
                             <i class="fa-solid fa-play"></i>
                             Xem ngay
                         </a>
-                        <span class="quality">${data.quality}</span>
-                        <span class="year">${data.year}</span>
-                        <span class="episode_current">${data.episode_current}</span>
+                        <span class="quality">${data?.quality}</span>
+                        <span class="year">${data?.year}</span>
+                        <span class="episode_current">${data?.episode_current}</span>
                     </div>
                 </div>
             `
@@ -54,30 +54,30 @@ const infoMovie = (() => {
         renderInfoMovie(data, element) {
             const htmls = `
                 <p class="infomation-movie__content">
-                    Nội dung: <span>${data.content}</span>
+                    Nội dung: <span>${data?.content}</span>
                 </p>
                 <span class="infomation-movie__country">
-                    Quốc gia: <span>${data.country[0].name}</span> 
+                    Quốc gia: <span>${data?.country[0].name}</span> 
                 </span>
                 <span class="infomation-movie__time">
-                    Thời gian: <span>${data.time}</span> 
+                    Thời gian: <span>${data?.time}</span> 
                 </span>
                 <ul class="infomation-movie__director">
                     <h4>Đạo diễn</h4>
-                    ${data.director.map(name => `
+                    ${data?.director.map(name => `
                         <li>${name}</li>
                     `).join('')}
                 </ul>
                 <ul class="infomation-movie__actor">
                     <h4>Diễn viên</h4>
-                    ${data.actor.map(name => `
+                    ${data?.actor.map(name => `
                         <li>${name}</li>
                     `).join('')}
                 </ul>
                 <ul class="infomation-movie__category">
                     <h4>Thể loại</h4>
-                    ${data.category.map(category => `
-                    <li>${category.name}</li> 
+                    ${data?.category.map(category => `
+                    <li>${category?.name}</li> 
                     `).join('')}
                 </ul>
             `

@@ -1,10 +1,10 @@
 import storage from "./localStorage.js"
 
 const handleSetTitleAndStoreData = (data) => {
-    const movieName = data.movie.name
-    const serverData = data.episodes[0].server_data
+    const movieName = data?.movie?.name
+    const serverData = data?.episodes[0]?.server_data
     if (!movieName && !serverData) {
-        console.log('Title page or movie name or sever data not found!')
+        console.error('Title page or movie name or sever data not found!')
         return
     }
     const link_embed = serverData.map(link => link)

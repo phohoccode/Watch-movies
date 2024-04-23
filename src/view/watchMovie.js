@@ -1,5 +1,5 @@
 import storage from "../utils/localStorage.js"
-import {$,$$, header, footer } from "../utils/base.js"
+import { $,$$, header, footer } from "../utils/base.js"
 import toastMessege from "../utils/toastMessage.js"
 import Header from "../components/Header/Header.js"
 import Footer from "../components/Footer/Footer.js"
@@ -9,6 +9,7 @@ const wacthMovie = (() => {
     const link_embed = storage.get('link_embed')
     const curentMovie = storage.get('current-movie')
     const movieName = storage.get('movie-name')
+
     return {
         renderMovie(data) {
             const htmls = `
@@ -20,8 +21,8 @@ const wacthMovie = (() => {
                     ${data.map((episode, index) => `
                     <div class="episode" 
                         data-index="${index}" 
-                        data-linkEmbed="${episode.link_embed}">
-                        ${episode.name}
+                        data-linkEmbed="${episode?.link_embed}">
+                        ${episode?.name}
                      </div>
                     `).join('')}
                 </div>

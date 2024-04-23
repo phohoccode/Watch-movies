@@ -1,17 +1,8 @@
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
-const mainPage = $('.main-page')
-const content = $('.content')
-const header = $('.main-page > header')
-const footer = $('footer')
-
+export const $ = document.querySelector.bind(document)
+export const $$ = document.querySelectorAll.bind(document)
+export const mainPage = $('.main-page')
+export const content = $('.content')
+export const header = $('.main-page > header')
+export const footer = $('footer')
 window.$ = $
 window.$$ = $
-
-export {
-    $, $$,
-    content,
-    header,
-    footer,
-    mainPage
-}

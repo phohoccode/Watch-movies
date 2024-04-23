@@ -2,7 +2,7 @@ import Header from "../components/Header/Header.js"
 import Footer from "../components/Footer/Footer.js"
 import Movies from "../components/Content/Movies.js"
 import fetchAPI from "../utils/fectchAPI.js"
-import { $, header, footer } from "../utils/base.js"
+import { $, $$, header, footer } from "../utils/base.js"
 import toastMessege from "../utils/toastMessage.js"
 import storage from "../utils/localStorage.js"
 import initLoader from "../utils/initLoader.js"
@@ -17,10 +17,10 @@ const searchPage = (() => {
 
     return {
         async fetchApi(limitMovie) {
-            const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
             try {
+                const API_KEY = `https://phimapi.com/v1/api/tim-kiem?keyword=${valueSearch}&limit=${limitMovie}`
                 const movieData = await fetchAPI(API_KEY)
-                if (movieData.data.items.length === 0) {
+                if (movieData?.data?.items.length === 0) {
                     this.handleNoResults()
                     return
                 }
@@ -49,18 +49,18 @@ const searchPage = (() => {
                     <div class="title-name">Kết quả tìm kiếm cho từ khóa: ${valueSearch}</div>
                 </header>
                 <div class="movies">
-                    ${Movies(data.items)}
+                    ${Movies(data?.items)}
                 </div>
             `
             element.innerHTML = htmls
         },
         handleEvent() {
             seeMoreButton.addEventListener('click', () => {
-                const moviesDisplayed = document.querySelectorAll('.movie').length
+                const moviesDisplayed = $$('.movie').length
                 if (moviesDisplayed < limitNew) {
                     toastMessege({
-                        title: 'Đã hiển thị tất cả phim',
-                        message: 'Phim sẽ được cập nhật thêm',
+                        title: 'Tải dữ liệu thất bại!',
+                        message: 'Đã hiển thị toàn bộ phim.',
                         type: 'error'
                     })
                     return
@@ -68,6 +68,13 @@ const searchPage = (() => {
                 index++
                 limitNew = limitDefault * index
                 this.fetchApi(limitNew)
+                setTimeout(() => {
+                    toastMessege({
+                        title: 'Tải dữ liệu thành công!',
+                        message: 'Phim đã được cập nhật.',
+                        type: 'success'
+                    })
+                }, 1000)
             })
         },
         start() {

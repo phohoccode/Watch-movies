@@ -2,17 +2,13 @@ import fetchAPI from "./fectchAPI.js"
 import handleSetTitleAndStoreData from "./handleSetTitleAndStoreData.js"
 
 const handleWatchNowSlide = async (element) => {
-    const linkSlug = element.dataset.slug
-    if (!linkSlug) {
-        console.log('Error link slug')
-        return
-    }
     try {
+        const linkSlug = element.dataset.slug
         const data = await fetchAPI(linkSlug)
         handleSetTitleAndStoreData(data)
         window.location.href = './watchMovie-page.html'
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
 export default handleWatchNowSlide

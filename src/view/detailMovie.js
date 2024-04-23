@@ -16,28 +16,28 @@ const detailMovie = (() => {
 
     return {
         async fetchApi(currentPage) {
-            const API_KEY = `${storage.get('link-api')}?page=${currentPage}&limit=20`
             try {
+                const API_KEY = `${storage.get('link-api')}?page=${currentPage}&limit=20`
                 const movieData = await fetchAPI(API_KEY)
-                const titleHead = movieData.data.seoOnPage.titleHead
+                const titleHead = movieData?.data?.seoOnPage?.titleHead
                 document.title = titleHead
                 setTimeout(() => {
-                    this.renderAllMovie(movieData.data, allMovie)
+                    this.renderAllMovie(movieData?.data, allMovie)
                 }, 1000)
-                history.pushState(null, '', `/Watch-movies/detailMovie-page.html?${movieData.data.breadCrumb[0].slug}`);
+                history.pushState(null, '', `/Watch-movies/detailMovie-page.html?${movieData?.data?.breadCrumb[0]?.slug}`);
             } catch(error) {
-                console.log(error)
+                console.error(error)
                 hanleWhenDowloadingMoviesFail()
             }
         },
         renderAllMovie(data, element) {
             const htmls = `
                 <header>
-                    <div class="title-name">Danh sách tất cả phim ${data.titlePage}</div>
-                    <span class="current-page">${data.breadCrumb[1].name}</span>
+                    <div class="title-name">Danh sách tất cả phim ${data?.titlePage}</div>
+                    <span class="current-page">${data?.breadCrumb[1]?.name}</span>
                 </header>
                 <div class="movies">
-                    ${Movies(data.items)}
+                    ${Movies(data?.items)}
                 </div>
             `
             element.innerHTML = htmls
@@ -73,12 +73,12 @@ const detailMovie = (() => {
             })
         },
         handleClickChangePage(page, index) {
+            this.setActivePage(page)
             this.fetchApi(index)
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             })
-            this.setActivePage(page)
             setTimeout(() => {
                 toastMessege({
                     title: 'Chuyển trang thành công!',
