@@ -16,25 +16,12 @@ const fetchAPI = (API_KEY) => {
             console.error('Error: ', err)
         })
 }
+
 export default fetchAPI
-
-const fectchTextHtml = (HTML) => {
-    return fetch(HTML)
-        .then(async response => {
-            if (response.ok) {
-                return await response.text()
-            }
-        })
-        .catch(err => {
-            console.log('Error', err)
-        })
-}
-
 export {
     API_FEATUREFILM,
     API_TELEVISIONSERIES,
     API_CARTOON, API_TVSHOWS,
     API_CATEGORY, API_COUNTRY,
-    fectchTextHtml
 }
 

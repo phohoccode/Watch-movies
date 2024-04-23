@@ -1,9 +1,8 @@
 import storage from "../utils/localStorage.js"
 import {$,$$, header, footer } from "../utils/base.js"
-import Header from "../components/Header/Header.js"
-import handleFeedback from "../utils/handleFeedback.js"
-import componentRendering from "../utils/componentRendering.js"
 import toastMessege from "../utils/toastMessage.js"
+import Header from "../components/Header/Header.js"
+import Footer from "../components/Footer/Footer.js"
 
 const wacthMovie = (() => {
     const detailMovie = $('.detail-movie')
@@ -74,12 +73,11 @@ const wacthMovie = (() => {
         },
         start() {
             Header(header)
-            componentRendering('./src/components/footer.html', footer)
+            Footer(footer)
             this.setDocumentTitle()
             this.renderMovie(link_embed)
             this.setActiveMovieDefault()
             this.handleClickChangeEpisode()
-            handleFeedback()
         }
     }
 })()

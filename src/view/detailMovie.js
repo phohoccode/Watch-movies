@@ -1,10 +1,9 @@
-import { $, $$, header, footer } from "../utils/base.js"
 import Header from "../components/Header/Header.js"
 import Movies from "../components/Content/Movies.js"
+import Footer from "../components/Footer/Footer.js"
+import { $, $$, header, footer } from "../utils/base.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import storage from "../utils/localStorage.js"
-import handleFeedback from "../utils/handleFeedback.js"
-import componentRendering from "../utils/componentRendering.js"
 import toastMessege from "../utils/toastMessage.js"
 import initLoader from "../utils/initLoader.js"
 import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
@@ -60,8 +59,6 @@ const detailMovie = (() => {
             $$('.page')[0].classList.add('active')
         },
         handleEvent() {
-            handleFeedback()
-
             const paginations = $('.paginations')
             paginations.addEventListener('click', (e) => {
                 const page = e.target.closest('.page')
@@ -92,9 +89,9 @@ const detailMovie = (() => {
         },
         start() {
             Header(header)
+            Footer(footer)
             initLoader(2000)
             this.fetchApi(page)
-            componentRendering('./src/components/footer.html', footer)
             setTimeout(() => {
                 this.renderPaginations(totalPages)
                 this.setActivePageDefault()

@@ -1,9 +1,8 @@
+import Header from "../components/Header/Header.js"
+import Footer from "../components/Footer/Footer.js"
 import { $, header, footer } from "../utils/base.js"
 import fetchAPI from "../utils/fectchAPI.js"
 import storage from "../utils/localStorage.js"
-import Header from "../components/Header/Header.js"
-import handleFeedback from "../utils/handleFeedback.js"
-import componentRendering from "../utils/componentRendering.js"
 import handleSetTitleAndStoreData from "../utils/handleSetTitleAndStoreData.js"
 import hanleWhenDowloadingMoviesFail from "../utils/handleWhenDownloadingMoviesFails.js"
 import initLoader from "../utils/initLoader.js"
@@ -86,10 +85,9 @@ const infoMovie = (() => {
         },
         start() {
             Header(header)
+            Footer(footer)
             initLoader(2000)
-            this.fetchApi()
-            componentRendering('./src/components/footer.html', footer)
-            handleFeedback()
+            this.fetchApi() 
         }
     }
 })()

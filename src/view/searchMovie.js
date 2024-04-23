@@ -1,9 +1,8 @@
-import fetchAPI from "../utils/fectchAPI.js"
-import Movies from "../components/Content/Movies.js"
-import { $, header, footer } from "../utils/base.js"
 import Header from "../components/Header/Header.js"
-import handleFeedback from "../utils/handleFeedback.js"
-import componentRendering from "../utils/componentRendering.js"
+import Footer from "../components/Footer/Footer.js"
+import Movies from "../components/Content/Movies.js"
+import fetchAPI from "../utils/fectchAPI.js"
+import { $, header, footer } from "../utils/base.js"
 import toastMessege from "../utils/toastMessage.js"
 import storage from "../utils/localStorage.js"
 import initLoader from "../utils/initLoader.js"
@@ -56,7 +55,6 @@ const searchPage = (() => {
             element.innerHTML = htmls
         },
         handleEvent() {
-            handleFeedback()
             seeMoreButton.addEventListener('click', () => {
                 const moviesDisplayed = document.querySelectorAll('.movie').length
                 if (moviesDisplayed < limitNew) {
@@ -74,9 +72,9 @@ const searchPage = (() => {
         },
         start() {
             Header(header)
+            Footer(footer)
             initLoader(1000)
             this.fetchApi(limitDefault)
-            componentRendering('./src/components/footer.html', footer)
             this.handleEvent()
         }
     }

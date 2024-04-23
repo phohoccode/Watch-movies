@@ -1,22 +1,13 @@
-import { API_FEATUREFILM,
-         API_CARTOON,
-         API_TVSHOWS,
-        API_TELEVISIONSERIES 
-} from "../utils/fectchAPI.js"
-import { $,
-         content,
-         header,
-         footer
-} from "../utils/base.js"
-import Header from "../components/Header/Header.js"
-import Movies from "../components/Content/Movies.js"
-import Slides from "../components/Content/Slides.js"
+import { API_FEATUREFILM, API_CARTOON, API_TVSHOWS, API_TELEVISIONSERIES } from "../utils/fectchAPI.js"
+import { $, content, header, footer } from "../utils/base.js"
 import fetchAPI from "../utils/fectchAPI.js"
-import handleFeedback from "../utils/handleFeedback.js"
-import componentRendering from "../utils/componentRendering.js"
-import handlePrevOrNextButton from "../utils/handlePrevOrNextButton.js"
 import initLoader from "../utils/initLoader.js"
 import toastMessege from "../utils/toastMessage.js"
+import handlePrevOrNextButton from "../utils/handlePrevOrNextButton.js"
+import Header from "../components/Header/Header.js"
+import Slides from "../components/Content/Slides.js"
+import Movies from "../components/Content/Movies.js"
+import Footer from "../components/Footer/Footer.js"
 
 const root = (() => {
     let page = 1
@@ -107,8 +98,6 @@ const root = (() => {
                 currentPageCartoon,
                 currentPageTvShows
 
-            handleFeedback()
-
             handlePrevOrNextButton(
                 $('.slider-container .prev'),
                 $('.slider-container .next'),
@@ -156,9 +145,9 @@ const root = (() => {
         },
         start() {
             Header(header)
+            Footer(footer)
             initLoader(2000)
             this.fetchApi(page)
-            componentRendering('./src/components/footer.html', footer)
             history.pushState(null, '', `/Watch-movies/index.html?Trang-chủ`)
             setTimeout(() => {
                 toastMessege({

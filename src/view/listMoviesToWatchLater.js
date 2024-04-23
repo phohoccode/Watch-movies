@@ -1,8 +1,7 @@
 import Movies from "../components/Content/Movies.js"
-import { header, footer } from "../utils/base.js"
 import Header from "../components/Header/Header.js"
-import handleFeedback from "../utils/handleFeedback.js"
-import componentRendering from "../utils/componentRendering.js"
+import Footer from "../components/Footer/Footer.js"
+import { header, footer } from "../utils/base.js"
 import storage from "../utils/localStorage.js"
 import initLoader from "../utils/initLoader.js"
 
@@ -26,7 +25,6 @@ const moviesToWatchLater = (() => {
             element.innerHTML = movie
         },
         handleEvent() {
-            handleFeedback()
             listMoviesToWatchLater.addEventListener('click', (e) => {
                 const remove = e.target.closest('.icon-remove')
                 if (remove) {
@@ -36,15 +34,14 @@ const moviesToWatchLater = (() => {
         },
         start() {
             Header(header)
+            Footer(footer)
             initLoader(2000)
-            componentRendering('./src/components/footer.html', footer)
             setTimeout(() => {
                 this.renderMovieToWatchLater(listMoviesToWatchLater)
             }, 2000)
             this.handleEvent()
         }
     }
-})();
-
-moviesToWatchLater.start();
+})()
+moviesToWatchLater.start()
 
